@@ -1,0 +1,31 @@
+/** ====== Sass typography ====== **/
+body{
+    color: $font_color;
+    @extend %p16;
+    letter-spacing: 0.005em;
+}
+h1{@extend %h1;}
+h2{@extend %h2;}
+h3{@extend %h3;}
+h4{@extend %h4;}
+h5{@extend %h5;}
+h6{@extend %h6;}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    margin: 0 0 8px;
+    color: $font_color;
+    letter-spacing: 0.005em;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a{
+    color: $font_color;
+    &:hover{color: $font_color;}
+}

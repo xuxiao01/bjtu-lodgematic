@@ -1,0 +1,103 @@
+/** ====== Normalize Sass ====== **/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Gochi+Hand&display=swap');
+*,
+*::after,
+*::before{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;	
+	letter-spacing: 0.005em;
+}
+ul{
+    margin-bottom: 0; 
+}
+li {
+	display: list-item;
+	line-height: 28px;
+	list-style: none;
+}
+ul ul { margin-left: 20px; }
+ol {
+	float: none;
+	list-style: decimal;
+	padding-left: 15px;
+	& li {
+		list-style: decimal;
+		width: 100%;
+	}
+}
+ol ol { margin-left: 20px; }
+figure {
+	margin-bottom: 6px;
+	position: relative;
+}
+a,
+a:hover{
+    text-decoration: none;
+    color: $hyperlink;
+    outline: none;
+}
+p {
+	margin: 0 0 20px;
+	letter-spacing: 0.005em;
+	line-height: em(26,16);
+}
+img {
+	height: auto;
+	max-width: 100%;
+}
+iframe {border: none;}
+.wp-caption.alignnone { width: 100%; }
+button { border: none; }
+/** --- thme table style --- **/
+table {
+	background-color: transparent;
+	max-width: 100%;
+	width: 100%;
+	margin-bottom: 15px;
+	& > thead > tr > th,
+	& > tbody > tr > th,
+	& > tfoot > tr > th,
+	& > thead > tr > td,
+	& > tbody > tr > td,
+	& > tfoot > tr > td {
+		border-top: 1px solid $lighter;
+		border: 1px solid $lighter;
+		line-height: 2.5;
+		padding-left: 3px;
+		text-align: center;
+		vertical-align: top;
+	}
+	& thead tr th {
+		border-top: 1px solid $lighter;
+		text-align: center;
+		text-transform: capitalize;
+	}
+	& > thead > tr > th {
+		border-bottom: 2px solid $lighter;
+		vertical-align: bottom;
+	}
+}
+th { text-align: left; }
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td { border-top: 1px solid $lighter; }
+table > caption + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > th,
+table > thead:first-child > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > td { border-bottom: 0; }
+table > tbody + tbody { border-top: 2px solid $lighter; }
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td { padding: 6px 10px; }
+p ins { color: $dark; }
+dl dd { margin-left: 20px; }
+address { font-style: italic; }

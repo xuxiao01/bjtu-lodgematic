@@ -1,0 +1,30 @@
+{
+  "vsicons.presets.nestjs": true,
+  "files.exclude": {
+    "node_modules": true,
+    "dist": false
+  },
+  "editor": {
+    "formatOnSave": true
+  },
+  // .vue 格式化设置 "octref.vetur"
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "vetur.validation.template": false,
+  "vetur.experimental.templateInterpolationService": false,
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": true,
+      "singleQuote": true,
+      "printWidth": 100
+    }
+  },
+  "terminal.integrated.shellArgs.windows": [
+    "-ExecutionPolicy",
+    "Bypass",
+    "-NoExit",
+    "-Command",
+    "chcp 65001"
+  ]
+}

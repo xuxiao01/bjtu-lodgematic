@@ -1,0 +1,206 @@
+/** ====== footer layout ====== **/
+.tu-footer{
+    background-color: $lightest_02;
+    color: $font_color;
+    padding: 60px 0;
+    &_maintitle{
+        h5{
+            font-weight: 400;
+            margin: 0;
+        }
+        h3{
+            font-weight: 600;
+            margin: 0;
+        }
+        padding-bottom: 30px;
+    }
+    .tu-footerlist li a::before{background-color: $black_opacity_20;}
+    &_row{row-gap: 30px;}
+}
+.tu-footerdark{
+    color: $lightest_01;
+    background-color: $theme_color_60_dark;
+    padding-top: 60px;
+    .tu-socialmedia{margin-top: 20px;}
+}
+.tu-footerlogo{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px
+}
+.tu-footerdescription{
+    @extend %p15;
+}
+.tu-footertitle{
+    font-weight: 600;
+    color: inherit;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    .tu-tag{
+        margin-left: 10px;
+        border-radius: 10px 10px 10px 0;
+    }
+}
+
+.tu-footerlist{
+    gap: 10px 0; 
+    @extend %flex;
+    padding-left: 0;
+    li{
+        list-style: none;
+        flex:max(200px, 100%/4);
+        a{
+            @extend %p15;
+            display: flex;
+            color: inherit;
+            align-items: center;
+            @extend %transition;
+            &:hover{
+                color: $hyperlink;
+            }
+            &::before{
+                flex: none;
+                width: 3px;
+                height: 3px;
+                content: '';
+                border-radius: 50%;
+                margin: 12px 14px 0 0;
+                align-self: flex-start;
+                transform: translateY(-50%);
+                background-color: $white_opacity_40;
+            }
+            em{
+                font-style: normal;
+                padding-right: 14px;
+                color: $lightest_01;
+                @extend %transition;
+                &:hover{
+                    color: $hyperlink;
+                }
+            }
+            span{
+                color: $light;
+            }
+        }
+    }
+    .tu-footerlist-explore{
+        padding-left: 17px;
+        a{
+            @extend %p14;
+            font-weight: 600;
+            color: $hyperlink;
+            padding-left: 1px;
+            &::before{content: none;}
+        }
+    }
+}
+.tu-footericonlist{
+    display: block;
+    margin: -5px;
+    li{
+        padding: 5px;
+        &:first-child{
+            a i{
+                font-size: 20px;
+            }
+        }
+        a{
+            flex-wrap: wrap;
+            &::before{content: none;}
+            i{
+                min-width: 18px;
+                text-align: center;
+                margin-right: 14px;
+                font-size: 16px;
+                color: $lighter;
+            }
+        }
+    }
+}
+.tu-seperator{
+    border-top: 1px solid rgba($white,0.15);
+    padding-top: 60px;
+    margin-top: 60px;
+    padding-bottom: 60px;
+    ~ .tu-seperator{margin-top: 0}
+}
+.tu-footerlistholder{
+    @extend %flex;
+    gap: 30px 0;
+    .tu-footercontent{
+        width: 61%;
+    }
+    .tu-footercontent-two{
+        width: 39%;
+    }
+}
+.tu-footercontent{
+    position: relative;
+    .tu-footernewsletter{
+        p{
+            font-size: rem(15);
+            line-height: em(24,15);
+        }
+    }
+    p{
+        margin: 0;
+        @extend %p14;
+        color: $lightest_01;
+    }
+    &_title{
+        max-width: 240px;
+        margin:0 23px 0 20px;
+    }
+    .tu-inputbtn{margin-top: 20px}
+    &-two{
+        ul.tu-footerlist{
+            gap: 10px 20px;
+        }
+    }
+}
+.tu-footerdevice{
+    @extend %flex;
+    gap: 10px;
+    padding: 20px 0 0;
+    flex-wrap: nowrap;
+
+    li{list-style: none;}
+}
+.tu-footernewsletter{
+    flex: auto;
+    width: 100%;
+}
+.tu-footercopyright{
+    padding: 20px 0;
+    background-color: $black_opacity_20;
+    &_content{
+        @extend %flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px 0;
+        > p{
+            margin: 0;
+            @extend %p15;
+            color: $lightest_01;
+        }
+    }
+    &_list{
+        @extend %flex;
+        gap: 5px 20px;
+        padding-left: 0;
+        li{
+            list-style-type: none;
+            line-height: inherit;
+            a{
+                @extend %h6;
+                display: block;
+                font-weight: 400;
+                color: $lightest_01;
+                @extend %transition;
+                &:hover,
+                &:focus{color: $hyperlink;}
+            }
+        }
+    }
+}

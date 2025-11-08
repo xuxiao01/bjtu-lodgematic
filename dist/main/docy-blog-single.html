@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="en"><head>
+    <!-- 使用统一的页面加载器 -->
+    <script src="../assets/js/app-head-bs.js"></script>
+    <style>
+        /* 设置绿色主题色 - 与其他页面保持一致 */
+        :root {
+            --color-primary: #60D1AE;
+        }
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mockjs@1.1.0/dist/mock.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>LodgeMatic - Smart Short-term Rental Management</title>
+
+    <!-- 样式 -->
+    <link rel="stylesheet" href="../assets/docy/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/docy/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="../assets/docy/assets/animation/animate.css">
+    <link rel="stylesheet" href="../assets/docy/css/style-main.css">
+    <link rel="stylesheet" href="../assets/docy/css/responsive.css">
+    <link rel="stylesheet" href="../assets/docy/css/bootstrap5-fixes.css">
+    <!-- 博客组件样式 -->
+    <link rel="stylesheet" href="../assets/docy/css/blog-components.css">
+    <!-- Unicons图标库 -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <!-- 新推特图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body data-scroll-animation="true" class="fixed-header">
+    <div class="body_wrapper">
+          <!-- 页头组件容器 -->
+          <div id="blog-header"></div>
+
+        <!-- 作者信息时间显示区域 -->
+        <section class="breadcrumb_area_three">
+            <div class="container">
+                <div class="breadcrumb_content">
+                    <h1 id="article-title">加载中...</h1>
+                    <div class="single_post_author">
+                        <img class="author_img" id="author-img" src="" alt="author">
+                        <div class="text">
+                            <a href="#">
+                                <h4 id="author-name">作者名</h4>
+                            </a>
+                            <div class="post_tag">
+                                <a href="#" id="publish-date">发布日期</a>
+                                <a href="#" id="read-time">阅读时间</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="blog_single_info">
+                            <div class="blog_single_item">
+                                <a href="#" class="blog_single_img">
+                                    <img id="blog-img" src="" alt="Main Image">
+                                </a>
+                                <!-- ✅ 动态内容统一插入点 -->
+                                <div id="article-content"></div>
+
+                                <!-- 分享文章+4个按钮 -->
+                                <div class="blog_social text-center">
+                                    <h5>Share This Article</h5>
+                                    <ul class="list-unstyled f_social_icon">
+                                        <li><a href="#"><i class="social_facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                        <li><a href="#"><i class="social_vimeo"></i></a></li>
+                                        <li><a href="#"><i class="social_linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                        <!-- 文章分类侧边选项 -->
+                        <div class="widget categorie_widget">
+                            <h4 class="c_head">Post Categories</h4>
+                            <ul class="list-unstyled categorie_list">
+                                <li><a href="#">Creative <span>(12)</span></a></li>
+                                <li><a href="#">Inspiration <span>(8)</span></a></li>
+                                <li><a href="#">Lifestyle <span>(3)</span></a></li>
+                                <li><a href="#">News <span>(4)</span></a></li>
+                                <li><a href="#">Photography <span>(12)</span></a></li>
+                                <li><a href="#">Skill <span>(15)</span></a></li>
+                                <li><a href="#">Tourist Tours <span>(10)</span></a></li>
+                                <li><a href="#">Inspire <span>(5)</span></a></li>
+                            </ul>
+                        </div>
+
+                        <!-- tag 侧边栏 -->
+                        <div class="widget tag_widget">
+                            <h4 class="c_head">Tags</h4>
+                            <ul class="list-unstyled w_tag_list">
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">Apps</a></li>
+                                <li><a href="#">Photography</a></li>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Docy</a></li>
+                                <li><a href="#">WordPress</a></li>
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">DocAll</a></li>
+                                <li><a href="#">Magento</a></li>
+                                <li><a href="#">Doc Design</a></li>
+                                <li><a href="#">ui/ux</a></li>
+                                <li><a href="#">Docs</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </section>
+
+
+
+
+       <!-- 页脚组件容器 -->
+       <div id="blog-footer"></div>
+    </div>
+
+    <!-- Back to top button -->
+    <a id="back-to-top" title="Back to Top"></a>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS (Bootstrap 5 with jQuery compatibility) -->
+    <script src="../assets/docy/js/jquery-3.7.1.min.js"></script>
+    <script src="../assets/docy/js/pre-loader.js"> </script>
+    <script src="../assets/docy/assets/bootstrap/js/popper.min.js"></script>
+    <script src="../assets/docy/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/docy/js/parallaxie.js"></script>
+    <script src="../assets/docy/js/TweenMax.min.js"></script>
+    <script src="../assets/docy/js/jquery.wavify.js"></script>
+    <script src="../assets/docy/assets/wow/wow.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="../assets/docy/js/main.js"></script>
+    <!-- 数据与渲染 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Mock.js 顶部已引入一次，以下按需可省略重复引入 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/mockjs@1.1.0/dist/mock.js"></script> -->
+    <script src="../assets/docy/api/samAxios.js"></script>
+	<script src="../assets/docy/mock-articles.js"></script>
+    <script src="../assets/docy/js/blog-single-render.js"></script>
+
+       <!-- 国际化系统 -->
+       <script src="../assets/js/i18n.js"></script>
+       <!-- 博客组件加载器 -->
+       <script src="../assets/docy/js/blog-include.js"></script>
+       <!-- 页面跳转加载动画 -->
+       <script src="../assets/js/page-transition.js"></script>
+
+
+</body></html>

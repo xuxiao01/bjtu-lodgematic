@@ -1,0 +1,123 @@
+/** ====== how it work page style ====== **/
+.tu-howit-steps{
+    padding: 10px 0 0;
+    &_info{
+        @extend %flex;
+        padding: 29px;
+        align-items: flex-start;
+        flex-direction: column;
+        > h5{
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        > p{
+            margin-bottom: 0;
+        }
+    }
+    &_content{
+        display: flex;
+        position: relative;
+        background: $white;
+        border-radius: $radius;
+        align-items: flex-start;
+        flex-direction: column;
+        flex:max(416px, 100%/4);
+        border: 1px solid $border-color;
+        box-shadow:$drop_shadows_lightest;
+        figure{
+            margin: 0;
+            width: 100%;
+            text-align: center;
+            img{width: 100%;}
+        }
+    }
+}
+.tu-step-tag{
+    display: block;
+    color: $white;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 4px 10.1px;
+    @extend %small_title;
+    border-radius: $radius;
+    background-color: black;
+}
+.tu-orange-bgclr{
+    background-color: $orange;
+}
+.tu-green-bgclr{
+    background-color: $bright_green;
+}
+.tu-blue-bgclr{
+    background-color: $hyperlink;
+}
+.tu-purple-bgclr{background-color: $blazing_purple;}
+.tu-processing-holder{
+    display: flex;
+    align-items: center;
+    background-color: $white;
+}
+.tu-processing-content {
+    width: 50%;
+    flex: auto;
+    padding: 50px;
+    & > .tu-maintitle,
+    & > .tu-processing-list{
+        max-width: 650px;
+    }
+}
+.tu-processing-list{
+    padding-left: 0;
+    li{
+        p{
+            margin: 0 0 0 78px;
+        }
+        + li{
+            margin-top: 20px;
+        }
+    }
+}
+.tu-processing-img{
+    width: 50%;
+    figure{
+        margin-bottom: 0;
+        img{
+            min-height: 718px;
+            object-fit: cover;
+        }
+    }
+}
+.tu-processinglist-info{
+    display: flex;
+    align-items: center;
+    i{
+        flex: none;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        font-size: 24px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+    }
+    h4{
+        margin: 0 0 0 16px;
+        font-weight: 600;
+    }
+}
+.tu-iconpurple_bgclr{
+    background-color: rgba(115, 87, 251, 0.1);
+    color: #7357FB;
+}
+.tu-icongreen_bgclr{
+    background: rgba(24, 185, 155, 0.1);
+    color: #18B99B;
+}
+.tu-iconorange_bgclr{
+    background: rgba(255, 97, 103, 0.1);
+    color: #FF6167;
+}
+.tu-banner_list-two{
+    padding-top: 10px;
+    justify-content: center;
+}

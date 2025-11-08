@@ -1,0 +1,146 @@
+/** ====== package page style ====== **/
+.tu-pricingtop{
+    text-align: center;
+    max-width: 856px;
+    margin: 0 auto;
+    h4{
+        margin:  0;
+        font-weight: 400;
+    }
+    h2{
+        font-weight: 600;
+        margin:  0 0 20px
+    }
+    p{
+        @extend %p16;
+        margin: 0 auto;
+        max-width: 750px;
+    }
+}
+.tu-pricinglist{
+    margin: 40px 0 0;
+    padding: 0;
+    @extend %flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    > li{
+      flex:max(316px, 100%/5);
+  }
+}
+.tu-plandetail{
+    h4{
+        @extend %h4;
+        font-weight: 600;
+        margin: 0
+    }
+    h3{
+        margin: 0;
+        @extend %h3;
+        gap: 0 10px;
+        @extend %flex;
+        color: $orange;
+        font-weight: 600;
+        align-items: center;
+        span{
+            @extend %p15;
+            color: $font-color;
+        }
+    }
+    span{
+        @extend %p15;
+    }
+    & > span{
+        display: block;
+    }
+    p{
+        @extend %p15;
+        margin: 20px 0 0;
+    }
+}
+.tu-planlist{
+    background: $white;
+    padding:  19px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    box-shadow: $drop_shadows_lightest;
+    @extend %transition;
+    .tu-btnarea{
+        margin: 20px 0 0 ;
+        a{
+            width: 100%;
+        }
+    }
+    &:hover{
+        box-shadow: $drop_shadows_medium;
+    }
+}
+.tu-planperks{
+    padding: 0;
+    list-style: none;
+    margin: 20px 0 0;
+    li{
+        list-style-type: none;
+        span{
+            @extend %flex;
+            font-size: rem(16);
+            align-items: center;
+            line-height: em(26,16);
+            justify-content: space-between;
+            i{
+                font-size: 16px;
+                &.fa-times{color: $red;}
+            }
+            em{
+                @extend %p16;
+                font-style: normal;
+                font-weight: 600;
+
+            }
+        }
+        & + li {
+            margin-top: 10px;
+        }
+    }
+}
+.tu-popularplan{
+    border: 1px solid $dark;
+    border-radius: 10px;
+    transform: translate(0, -44px);
+    .tu-planlist{
+        border-radius: 0 0 10px 10px;
+        border: 0;
+    }
+}
+.tu-popularplantop{
+    background: $dark;
+    padding: 7px 0;
+    @extend %flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+
+    h6{
+        @extend %h6;
+        color: $white;
+        margin: 0;
+        i{
+            display: inline-block;
+            font-size: 20px;
+            margin:  0 10px 0 0 ;
+        }
+    }
+}
+.tu-btnorange {
+    background-color: #F97316 !important;
+}
+.tu-btnplain{
+    border: 2px solid $border-color ;
+    background: transparent ;
+    color: $font-color;
+    &:hover , &:focus{
+        background: #F97316;
+        color: $white;
+        border-color: transparent;
+        &::before{opacity: 0;}
+    }
+}

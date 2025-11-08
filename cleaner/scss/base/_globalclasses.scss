@@ -1,0 +1,220 @@
+/** ====== global classes ====== **/
+.tu-main-section{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.tu-tag{
+    padding: 1px 8px;
+    background-color: $orange;
+    color: $white;
+    @extend %tiny_title;
+    font-weight: 700;
+    border-radius: 10px 10px 0px 10px;
+    display: inline-block;
+}
+.tu-bggreen{background-color: $bright_green !important;}
+.tu-maintitle{
+    padding-bottom: 30px;
+    &.text-center{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img{margin-bottom: 20px;}
+    h4{
+        font-weight: 400;
+        margin-bottom: 0;
+        span{
+            font-weight: 600;
+            color: $theme_color;
+            padding: 0 6px;
+        }
+    }
+    h2{
+        font-weight: 600;
+        margin-bottom: 0;
+        max-width: 550px;
+        span{
+            color: $hyperlink;
+        }
+        + p{padding-top: 20px;}
+    }
+    p{
+        max-width: 800px;
+        margin-bottom: 0;
+
+    }
+    > a{margin-top: 30px;}
+}
+.tu-mainbtn{
+    text-align: center;
+    padding-top: 40px;
+}
+.tu-green{color: $bright_green !important;}
+.tu-blue{color: $hyperlink !important;}
+.tu-orange{color: $orange !important;}
+/** --- pagination styling --- **/
+.tu-pagination { 
+    @extend %flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+    ul {
+        @extend %flex;
+        text-align: center;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: -5px;
+        padding-left: 0;
+        li {
+            padding: 5px;
+            line-height: inherit;
+            list-style-type:none;
+            display: inline-block;
+            vertical-align: middle;
+            a{
+                width: 44px;
+                height: 44px;
+                @extend %small_title;
+                font-weight: 600;
+                @extend %flex;
+                @extend %transition;
+                align-items: center;
+                background-color: #fff;
+                justify-content: center;
+                border-radius: $radius;
+                color: $light;
+                border: 1px solid $border_color;
+            }
+            i{font-size: 24px;}
+            & a:hover,
+            &.active a{
+                color: #fff;
+                border-color: $theme_color;
+                background-color: $theme_color;
+            }
+        }
+    }
+}
+.tu-pagination-prev{
+    padding-right: 45px !important;
+}
+.tu-pagination-next{
+    padding-left: 45px !important;
+}
+/** --- calendar global styling --- **/
+.litepicker .container__days .day-item,.litepicker .container__months .month-item-weekdays-row>div{
+    color: $charcoal_black;
+    @extend %h6;
+}
+.litepicker .container__months .month-item-weekdays-row>div{
+    box-shadow: inset 0px -1px 0px #DDDDDD;
+}
+.litepicker .container__months .month-item-header div>.month-item-name,.litepicker .container__months .month-item-header div>.month-item-year{
+    font-weight: 600;
+    @extend %h5;
+}
+.litepicker .container__months .month-item-header .button-previous-month>svg,.litepicker .container__months .month-item-header .button-next-month>svg{
+    color: $charcoal_black;
+    fill: $charcoal_black;
+}
+.litepicker .container__days .day-item.is-end-date,
+.litepicker .container__days .day-item.is-start-date{
+    background: $theme_color;
+    color: $white;
+}
+.litepicker .container__days .day-item.is-start-date{
+    border-radius: 25px 0px 0px 25px;
+}
+.litepicker .container__days .day-item.is-end-date{
+    border-radius: 0px 25px 25px 0px;
+}
+.litepicker .container__days .day-item.is-in-range{
+    background:#E1D6E5;
+}
+.litepicker .container__days .day-item:hover{
+    box-shadow: inset 0 0 0 2px #6A307D;
+    color: $font_color;
+    border-radius: 25px;
+}
+.litepicker .container__months,.litepicker .container__months .month-item{
+    width: 337px;
+    padding: 0;
+}
+.litepicker .container__days>div, .litepicker .container__days>a{
+    padding: 11px 0;
+    min-width: 48px;
+}
+.litepicker .container__days .day-item.is-today{
+    box-shadow: inset 0px -2px 0px #6A307D;
+    color: $font_color;
+    border-radius: 0;
+}
+.litepicker .container__months .month-item-header{
+    padding: 16px;
+}
+.litepicker .container__days .day-item.is-start-date.is-end-date{
+    border-radius: 25px;
+}
+/** --- preloader styling --- **/
+.tu-preloader {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    position: fixed;
+    background: #fff;
+    &_holder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+        border-radius: 50%;
+        position: relative;
+        margin: -25px 0 0 -25px;
+        -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+        & img {
+            position: absolute;
+            z-index: 1;
+            margin: 0 0 0 -6px;
+            max-width: 20px;
+        }
+    }
+}
+.tu-loader {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    -webkit-animation: load1 0.8s infinite linear;
+    animation: load1 0.8s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    background: $theme_color;
+    background: -moz-linear-gradient(left, $theme_color 10%, rgba(255, 88, 81, 0) 42%);
+    background: -webkit-linear-gradient(left, $theme_color 10%, rgba(255, 88, 81, 0) 42%);
+    background: -o-linear-gradient(left, $theme_color 10%, rgba(255, 88, 81, 0) 42%);
+    background: -ms-linear-gradient(left, $theme_color 10%, rgba(255, 88, 81, 0) 42%);
+    background: linear-gradient(to right, $theme_color 10%, rgba(255, 88, 81, 0) 42%);
+    &:after {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 92%;
+        height: 92%;
+        content: '';
+        margin: auto;
+        border-radius: 50%;
+        background: #fff;
+        position: absolute
+    }
+}

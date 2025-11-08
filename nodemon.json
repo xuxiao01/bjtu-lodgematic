@@ -1,0 +1,7 @@
+{
+  "watch": ["src"],
+  "ext": "html,js,css,scss",
+  "ignore": ["src/assets/**/*.min.*", "src/assets/**/*.bundle.*"],
+  "exec": "npm run build",
+  "delay": "1000"
+} 

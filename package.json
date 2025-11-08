@@ -1,0 +1,23 @@
+{
+  "name": "i18n-static-build",
+  "type": "commonjs",
+  "scripts": {
+    "devVite": "vite --force",
+    "buildVite": "vite build  --config vite.config.mjs",
+    "serve": "http-server dist",
+    "build": "node build.js",
+    "dev": "nodemon --watch src --ext html,js,css,scss --exec \"npm run build\"",
+    "start": "concurrently \"npm run dev\" \"npm run serve\""
+  },
+  "dependencies": {
+    "gulp": "^5.0.1",
+    "jsdom": "^24.0.0"
+  },
+  "devDependencies": {
+    "compression": "^1.8.1",
+    "concurrently": "^8.2.2",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.10",
+    "vite": "^7.1.9"
+  }
+}

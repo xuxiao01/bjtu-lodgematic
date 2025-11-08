@@ -1,0 +1,158 @@
+/**
+ * 博客组件样式文件
+ * 包含页头、页脚等组件的专用样式
+ */
+
+/* ========== 页头组件样式 ========== */
+
+/* Logo样式 */
+.header_logo img {
+    max-width: 120px;
+    max-height: 48px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+}
+
+/* 语言切换图标和文字颜色跟随logo颜色 */
+/* 默认状态：显示白色logo时，图标和文字为白色 */
+.navbar .dropdown .nav-link {
+    color: #fff !important;
+}
+
+.navbar .dropdown .nav-link .uil {
+    color: #fff !important;
+    font-size: 18px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* 当navbar固定时（显示黑色logo），图标和文字为黑色 */
+.navbar_fixed .dropdown .nav-link {
+    color: #333 !important;
+}
+
+.navbar_fixed .dropdown .nav-link .uil {
+    color: #333 !important;
+}
+
+/* 暗色模式下的特殊处理 */
+body.body_dark .navbar_fixed .dropdown .nav-link {
+    color: #fff !important;
+}
+
+body.body_dark .navbar_fixed .dropdown .nav-link .uil {
+    color: #fff !important;
+}
+
+/* 下载App按钮样式 */
+#download-app-btn {
+    background-color: #60D1AE !important;
+    border-color: #60D1AE !important;
+    color: #fff !important;
+}
+
+#download-app-btn:hover {
+    background-color: #4fb89a !important;
+    border-color: #4fb89a !important;
+    color: #fff !important;
+}
+
+/* ========== 页脚组件样式 ========== */
+
+/* 页脚社交媒体图标hover效果 */
+.doc_footer_area .list-unstyled a:hover {
+    color: #60D1AE !important;
+    transition: color 0.3s ease;
+}
+
+/* 页脚语言切换hover效果 */
+.doc_footer_area .dropdown a:hover {
+    color: #60D1AE !important;
+    transition: color 0.3s ease;
+}
+
+/* 页脚Logo区域和导航链接之间的间距 */
+@media (min-width: 992px) {
+    .footer-logo-section {
+        padding-right: 40px !important;
+    }
+    .footer-nav-section {
+        padding-left: 20px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .footer-logo-section,
+    .footer-nav-section {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+/* 页脚文字排版优化 */
+.footer-logo-section p {
+    font-size: 15px;
+    color: #333;
+    word-wrap: break-word;
+    hyphens: auto;
+    padding-top: -10px;
+}
+
+/* 调整doc_about_widget中段落的上边距 */
+.doc_about_widget p {
+    margin-top: 5px;
+}
+
+/* 确保Unicons图标正确渲染 */
+.uil, .uis, .uit {
+    font-family: 'unicons-line', 'unicons-solid', 'unicons-thinline' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.doc_footer_top {
+    padding: 100px 0 60px;
+    background: #f9f9f9;
+}
+
+/* ========== onepage.html 专用样式 ========== */
+
+/* 为onepage.html的内容区域添加顶部间距，避免与固定页头重叠 */
+.onepage-doc .doc_documentation_area {
+    padding-top: 70px !important;
+}
+
+/* 确保侧边栏跟随页面滚动，而不是固定定位 */
+.onepage-doc .doc_left_sidebarlist,
+.onepage-doc.body_fixed .doc_left_sidebarlist,
+.onepage-doc .doc_documentation_area.body_fixed .doc_left_sidebarlist,
+.onepage-doc .body_fixed .doc_left_sidebarlist {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    padding-top: 20px !important;
+    z-index: auto !important;
+}
+
+/* 确保主内容区域也有合适的顶部间距 */
+.onepage-doc .documentation_info {
+    padding-top: 10px;
+}
+
+/* 移动端适配 */
+@media (max-width: 991px) {
+    .onepage-doc .doc_documentation_area {
+        padding-top: 60px !important;
+    }
+    
+    .onepage-doc .doc_left_sidebarlist {
+        padding-top: 15px !important;
+    }
+}

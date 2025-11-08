@@ -1,0 +1,279 @@
+/** ====== header layout ====== **/
+.tu-navbar{
+    padding: 0 8px;
+    position: relative;
+    box-shadow: inset 0px -1px 0px $border-color;
+    .navbar-brand{
+        padding: 25px 0;
+        margin: 0;
+        display: block;
+        max-width: 133px;
+    }
+    .navbar-collapse{
+        margin-left: auto;
+        flex: initial;
+        .navbar-nav{
+
+            > .nav-item{
+               > a{
+                   position: relative;
+                   @extend %h6;
+                   font-weight: 400;
+                   padding: 27px 18px;
+                   .tu-tag{
+                       position: absolute;
+                       top: 9px;
+                       right: 18px;
+                   }
+                   &::before{
+                       content: '';
+                       position: absolute;
+                       top: 0;
+                       left: 0;
+                       width: 0;
+                       height: 2px;
+                       background-color: $orange;
+                       @extend %transition;
+                   }
+                   &:hover,
+                   &.active{
+                       &::before{width: 100%;}
+                   }
+               }
+               &:not(.tu-loginlink){
+                   a{color: $font_color;}
+               }
+           }
+        }
+    }
+}
+.tu-navbar.tu-navbarvtwo{
+    & .navbar-nav {
+        & > .menu-item-has-children,
+        & > .nav-item  {
+            & > a{
+                padding: 37px 18px;
+            }
+        }
+    }
+}
+.tu-loginlink{
+    a{
+        color: $hyperlink;
+        &:hover,
+        &:focus{color: $hyperlink;}
+    }
+}
+.tu-headerbtn{
+    flex: none;
+    padding-left: 20px;
+}
+.tu-headerv2{
+    z-index: 9;
+    position: relative;
+    .tu-menu{
+        background-color: $orange;
+    }
+    .tu-navbar{
+        padding: 0 18px;
+        border-bottom: 0;
+        box-shadow: none;
+    }
+    .line {
+        stroke: $white;   
+    }
+    .menu-item-has-children{
+        strong{
+            a{
+                padding: 30px 0;
+            }
+        }
+    } 
+    .tu-afterlogin > li > a:hover,
+    .tu-navbar .navbar-collapse > .navbar-nav > .nav-item:not(.tu-loginlink) > a,
+    .tu-afterlogin li > a,
+    .navbar-nav > .menu-item-has-children > a,
+    .tu-navbar .navbar-collapse .nav-item a{color: $white;}
+    .tu-headerbtn a{background-color: $orange;}
+}
+.tu-navbar.tu-navbarvtwo{
+    .navbar-collapse .nav-item a::before{
+        background-color: $pale_yellow;
+        height: 5px;
+
+    }
+}
+.tu-afterlogin{
+    @extend %flex;
+    padding-left: 0;
+    align-items: center;
+    .menu-item-has-children > .sub-menu > li > a{
+        display: flex;
+        padding: 11px 20px;
+        align-items: center;
+    }
+    > li{
+        margin: 0 10px;
+        strong{
+            > a{
+                padding: 19px 0;
+                img{
+                    max-width: 40px;
+                    display: inline-block;
+                    border-radius: 50%;
+                }
+            }
+        }
+        > a{
+            padding: 0;
+            display: flex;
+            min-width: 33px;
+            font-size: 24px;
+            position: relative;
+            align-items: center;
+            color: $charcoal_black;
+            & span:before{
+                display: block;
+                margin-top: 10px;
+            }
+            &:hover{
+                color: $charcoal_black;
+            }
+        }
+    }
+}
+.tu-messagenoti {
+    top: 0;
+    right: 0;
+    color: $white;
+    padding: 0 8px;
+    min-width: auto;
+    background: $red;
+    font-style: normal;
+    text-align: center;
+    position: absolute;
+    border-radius: 13px;
+    display: inline-block;
+    font: 700 11px/22px $heading_font_family;
+}
+.sub-menu{
+    right: 0;
+    display: none;
+    margin-left: 0;
+    padding:0;
+    width: 265px;
+    z-index: 1051;
+    background: $white;
+    position: absolute;
+    border-radius: $radius;
+    font-family: $heading-font-family; 
+    -webkit-box-shadow:$drop_shadows_medium;
+    box-shadow: $drop_shadows_medium;
+    border: 1px solid $lightest_02;
+    li{
+        width: 100%;
+        @extend %flex;
+        position: relative;
+        &:hover{
+            > a{background: $lightest;}
+        }
+        .sub-menu{
+            right: 100%;
+        }
+        & a{
+            @extend %transition;
+            width: 100%;
+            display: block;
+            padding: 14px 20px;
+            color: $dark;
+            margin: 0;
+            i{
+                font-size: rem(20);
+                padding-right: 10px;
+                color: $light;
+            }
+        }
+    }
+    .sv-menudropdown{
+        position: relative;
+        .sub-menu{
+            right: 100%;
+            top: 100%;
+            margin-left: 10px;
+        }
+    }
+    .menu-item-has-children > a:after{
+        content: "\e930";
+        margin-left: auto;
+    }
+}
+.menu-item-has-children{
+    position: relative;
+    & > a{
+        @extend %h6;
+        display: flex;
+        font-weight: 400;
+        color: $font_color;
+        align-items:center;
+        padding: 27px 18px;  
+        &:after{
+            right: 30px;
+            font-size: 20px;
+            margin-left: 5px;
+            font-weight: 400;
+            @extend %transition;
+            display: inline-block;
+            vertical-align: middle;
+            font-family: 'icomoon' !important;
+        }
+    }
+    
+    > .sub-menu{
+        > li{
+            > a{
+                width: 100%;
+                color: $dark;
+               
+                &:nth-last-child(2){
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+.navbar-nav{
+    .menu-item-has-children.nav-item{
+        .sub-menu{
+            li{
+                a{
+                    padding: 12px 20px;
+    
+                }
+            }
+        }
+    }
+}
+.tu-menutag{
+    color: $white;
+    font-weight: 600;
+    padding: 1px 8px;
+    margin-left: 10px;
+    font-style: normal;
+    @extend %tiny_title;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+    background-color: $orange;
+}
+@media (min-width: 1199px){
+    .menu-item-has-children{
+        & > a{
+            &:after{
+                content: "\e92e";
+            }
+        }
+    }    
+}

@@ -1,0 +1,123 @@
+/** ====== login page style ====== **/
+.tu-main-login{
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+}
+.tu-login-left{
+    width: 50%;
+    display: flex;
+    padding: 50px 30px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #0A0F26;
+    figure{
+        margin: 116px 0 0 0;
+    }
+    &_title{
+        text-align: center;
+        padding-top: 80px;
+        h2{
+            margin-bottom: 0;
+            color: $white;
+            font-weight: 600;
+        }
+        span{
+            @extend %h3;
+            font-weight: 400;
+            color: #FCCF14;
+        }
+    }
+}
+.tu-login-right{
+    width: 50%;
+    display: flex;
+    padding: 50px 30px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    &_title{
+        text-align: center;
+        h2{
+            margin-bottom: 0;
+            color: $theme_color;
+        }
+        h3{
+            margin: 10px 0 0 0;
+        }
+    }
+}
+.tu-login-form{
+    .form-group-wrap {
+        width: 100%;
+        max-width: 436px;
+        margin-top: 40px;
+    }
+    .form-group{
+        > a{
+            width: 100%;
+        }
+    }
+}
+.tu-optioanl-or{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    position: relative;
+    span{
+        @extend %h6;
+        color: $light;
+        background-color: $white;
+        position: relative;
+        padding: 0 10px;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        height: 1px;
+        width: 100%;
+        background-color: $lighter;
+    }
+}
+.tu-btn-signup{
+    border : 1.5px solid $lighter;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark;
+    @extend %h6;
+    img{
+        padding-right: 10px;
+    }
+    &:hover,
+    &:focus{
+        background-color: #fff;
+        color: $dark;
+    }
+}
+.tu-lost-password{
+    justify-content: space-between;
+    a{
+        @extend %h6;
+        width: auto !important;
+        color: $theme_color;
+    }
+    .tu-password-clr_light{
+        color: $light;
+        &:hover{
+            color: $light;
+        }
+    }
+}
+.tu-signup-check{
+    padding: 10px 0;
+    label{
+        span{
+            color: $light;
+        }
+    }
+}
