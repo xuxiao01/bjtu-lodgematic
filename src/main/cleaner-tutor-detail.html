@@ -8,8 +8,10 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BootStrap HTML5 CSS3 Theme</title>
-	<meta name="description" content="">
+	<title>{{TITLE}} - LodgeMatic Cleaner Profile</title>
+	<meta name="description" content="{{DESCRIPTION}}">
+	<meta property="og:title" content="{{TITLE}} - LodgeMatic Cleaner Profile">
+	<meta property="og:description" content="{{DESCRIPTION}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="icon" href="../assets/cleaner/images/favicon.png" type="image/x-icon">
@@ -77,6 +79,87 @@
                 preloader.remove();
             })();
         }
+    </script>
+    <!-- Load tutor info from URL parameters (for development) -->
+    <script>
+        (function() {
+            // 检查是否有占位符（说明是模板，需要从URL参数加载）
+            const hasPlaceholders = document.body.innerHTML.includes('{{NAME}}');
+            if (!hasPlaceholders) return; // 如果是构建后的页面，不需要这个脚本
+            
+            // 获取URL参数
+            function getUrlParams() {
+                const params = new URLSearchParams(window.location.search);
+                return {
+                    name: params.get('name') || 'Armando weber',
+                    rating: params.get('rating') || '4.5',
+                    reviews: params.get('reviews') || '4448',
+                    location: params.get('location') || 'Sacramento, CA',
+                    price: params.get('price') || '562.32',
+                    image: params.get('image') || 'img-01.png'
+                };
+            }
+
+            // 更新页面信息
+            function updateTutorInfo() {
+                const info = getUrlParams();
+                
+                // 更新姓名 (h3标题)
+                const nameH3 = document.querySelector('.tu-product-title h3');
+                if (nameH3) {
+                    const checkIcon = nameH3.querySelector('i');
+                    if (checkIcon) {
+                        const iconHTML = checkIcon.outerHTML;
+                        nameH3.innerHTML = info.name + ' ' + iconHTML;
+                    } else {
+                        nameH3.textContent = info.name;
+                    }
+                }
+
+                // 更新评分和评论数 (第一个li)
+                const ratingLi = document.querySelector('.tu-tutorreview li:first-child span');
+                if (ratingLi && ratingLi.querySelector('.fa-star')) {
+                    ratingLi.innerHTML = `<i class="fa fa-star tu-coloryellow"> <em>${info.rating}<span>/5.0</span></em> </i>  <em>(${parseInt(info.reviews).toLocaleString()})</em>`;
+                }
+
+                // 更新位置 (最后一个li)
+                const locationLi = document.querySelector('.tu-tutorreview li:last-child span');
+                if (locationLi) {
+                    const icon = locationLi.querySelector('i.icon-map-pin');
+                    if (icon) {
+                        const innerSpan = icon.querySelector('span');
+                        if (innerSpan) {
+                            innerSpan.textContent = info.location;
+                        } else {
+                            icon.innerHTML = `<span>${info.location}</span>`;
+                        }
+                    }
+                }
+
+                // 更新价格
+                const priceH4 = document.querySelector('.tu-listinginfo_price h4');
+                if (priceH4) {
+                    priceH4.textContent = `$${parseFloat(info.price).toFixed(2)}/hr`;
+                }
+
+                // 更新头像图片
+                if (info.image) {
+                    const imagePath = `../assets/cleaner/images/listing/${info.image}`;
+                    const imageElements = document.querySelectorAll('.tu-profileview figure img, .tu-productorder-content figure img');
+                    imageElements.forEach(el => {
+                        el.src = imagePath;
+                        el.alt = info.name;
+                    });
+                }
+            }
+
+            // 页面加载完成后更新信息
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateTutorInfo);
+            } else {
+                updateTutorInfo();
+            }
+        })();
     </script>
 </head>
 <body>
@@ -221,32 +304,32 @@
                             <span class="tu-cardtag"></span>
                             <div class="tu-profileview">
                                 <figure>
-                                    <img src="../assets/cleaner/images/tutordetail/img-01.jpg" alt="image-description">
+                                    <img src="{{IMAGE_PATH}}" alt="{{NAME}}">
                                 </figure>
                                 <div class="tu-protutorinfo">
                                     <div class="tu-protutordetail">
                                         <div class="tu-productorder-content">
                                             <figure>
-                                                <img src="../assets/cleaner/images/tutordetail/img-01.jpg" alt="images">
+                                                <img src="{{IMAGE_PATH}}" alt="{{NAME}}">
                                             </figure>
                                             <div class="tu-product-title">
-                                                <h3>Armando weber <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h3>
+                                                <h3>{{NAME}} <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h3>
                                                 <h5>Spreading knowledge everywhere that's all I do</h5>
                                             </div>
                                             <div class="tu-listinginfo_price">
                                                 <span>Starting from:</span>
-                                                <h4>$562.32/hr</h4>
+                                                <h4>${{PRICE}}/hr</h4>
                                             </div>
                                         </div>
                                         <ul class="tu-tutorreview">
                                             <li>
-                                                <span><i class="fa fa-star tu-coloryellow"> <em>4.5<span>/5.0</span></em> </i>  <em>(4,448)</em></span>
+                                                <span><i class="fa fa-star tu-coloryellow"> <em>{{RATING}}<span>/5.0</span></em> </i>  <em>({{REVIEWS}})</em></span>
                                             </li>
                                             <li>
                                                 <span><i class="fa fa-check-circle tu-colorgreen"><em>95%</em></i><em>Job compeletion</em></span>
                                             </li>
                                             <li>
-                                                <span><i class="icon icon-map-pin"><span>Sacramento, CA</span></i></span>
+                                                <span><i class="icon icon-map-pin"><span>{{LOCATION}}</span></i></span>
                                             </li>
                                         </ul>	
                                         <div class="tu-detailitem">

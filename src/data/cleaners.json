@@ -1,0 +1,58 @@
+[
+  {
+    "id": "mistie-monge",
+    "name": "Mistie Monge",
+    "slug": "mistie-monge",
+    "rating": "5.0",
+    "reviews": "4448",
+    "location": "Phoenix, MN",
+    "price": "712.93",
+    "image": "img-01.png",
+    "description": "Hello there! My name is Mistie and I'm currently a pre-medical student. I have a deep passion for teaching and I am looking for students, mainly primary, to help them get ahead of school and ace their grades!"
+  },
+  {
+    "id": "jamie-armstrong",
+    "name": "Jamie Armstrong",
+    "slug": "jamie-armstrong",
+    "rating": "5.0",
+    "reviews": "4448",
+    "location": "New Orleans, OR",
+    "price": "610.29",
+    "image": "img-02.png",
+    "description": "Hello there! My name is Jamie and I'm currently a pre-medical student. I have a deep passion for teaching and I am looking for students, mainly primary, to help them get ahead of school and ace their grades!"
+  },
+  {
+    "id": "nathaniel-fischer",
+    "name": "Nathaniel Fischer",
+    "slug": "nathaniel-fischer",
+    "rating": "5.0",
+    "reviews": "4448",
+    "location": "San Francisco, ID",
+    "price": "481.84",
+    "image": "img-03.png",
+    "description": "Hello there! My name is Nathaniel and I'm currently a pre-medical student. I have a deep passion for teaching and I am looking for students, mainly primary, to help them get ahead of school and ace their grades!"
+  },
+  {
+    "id": "bernard-keller",
+    "name": "Bernard Keller",
+    "slug": "bernard-keller",
+    "rating": "5.0",
+    "reviews": "4448",
+    "location": "Austin, AZ",
+    "price": "505.81",
+    "image": "img-04.png",
+    "description": "Hello there! My name is Bernard and I'm currently a pre-medical student. I have a deep passion for teaching and I am looking for students, mainly primary, to help them get ahead of school and ace their grades!"
+  },
+  {
+    "id": "elizabeth-leonard",
+    "name": "Elizabeth Leonard",
+    "slug": "elizabeth-leonard",
+    "rating": "5.0",
+    "reviews": "4448",
+    "location": "Tampa, LA",
+    "price": "475.66",
+    "image": "img-02.png",
+    "description": "Hello there! My name is Elizabeth and I'm currently a pre-medical student. I have a deep passion for teaching and I am looking for students, mainly primary, to help them get ahead of school and ace their grades!"
+  }
+]
+

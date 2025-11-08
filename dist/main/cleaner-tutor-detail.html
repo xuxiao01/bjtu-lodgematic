@@ -3,6 +3,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>LodgeMatic - Smart Short-term Rental Management</title>
 	<meta name="description" content="AI-powered platform for efficient short-term rental and cleaning management.">
+	<meta property="og:title" content="{{TITLE}} - LodgeMatic Cleaner Profile">
+	<meta property="og:description" content="{{DESCRIPTION}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="icon" href="../assets/cleaner/images/favicon.png" type="image/x-icon">
@@ -71,6 +73,87 @@
             })();
         }
     </script>
+    <!-- Load tutor info from URL parameters (for development) -->
+    <script>
+        (function() {
+            // 检查是否有占位符（说明是模板，需要从URL参数加载）
+            const hasPlaceholders = document.body.innerHTML.includes('{{NAME}}');
+            if (!hasPlaceholders) return; // 如果是构建后的页面，不需要这个脚本
+            
+            // 获取URL参数
+            function getUrlParams() {
+                const params = new URLSearchParams(window.location.search);
+                return {
+                    name: params.get('name') || 'Armando weber',
+                    rating: params.get('rating') || '4.5',
+                    reviews: params.get('reviews') || '4448',
+                    location: params.get('location') || 'Sacramento, CA',
+                    price: params.get('price') || '562.32',
+                    image: params.get('image') || 'img-01.png'
+                };
+            }
+
+            // 更新页面信息
+            function updateTutorInfo() {
+                const info = getUrlParams();
+                
+                // 更新姓名 (h3标题)
+                const nameH3 = document.querySelector('.tu-product-title h3');
+                if (nameH3) {
+                    const checkIcon = nameH3.querySelector('i');
+                    if (checkIcon) {
+                        const iconHTML = checkIcon.outerHTML;
+                        nameH3.innerHTML = info.name + ' ' + iconHTML;
+                    } else {
+                        nameH3.textContent = info.name;
+                    }
+                }
+
+                // 更新评分和评论数 (第一个li)
+                const ratingLi = document.querySelector('.tu-tutorreview li:first-child span');
+                if (ratingLi && ratingLi.querySelector('.fa-star')) {
+                    ratingLi.innerHTML = `<i class="fa fa-star tu-coloryellow"> <em>${info.rating}<span>/5.0</span></em> </i>  <em>(${parseInt(info.reviews).toLocaleString()})</em>`;
+                }
+
+                // 更新位置 (最后一个li)
+                const locationLi = document.querySelector('.tu-tutorreview li:last-child span');
+                if (locationLi) {
+                    const icon = locationLi.querySelector('i.icon-map-pin');
+                    if (icon) {
+                        const innerSpan = icon.querySelector('span');
+                        if (innerSpan) {
+                            innerSpan.textContent = info.location;
+                        } else {
+                            icon.innerHTML = `<span>${info.location}</span>`;
+                        }
+                    }
+                }
+
+                // 更新价格
+                const priceH4 = document.querySelector('.tu-listinginfo_price h4');
+                if (priceH4) {
+                    priceH4.textContent = `$${parseFloat(info.price).toFixed(2)}/hr`;
+                }
+
+                // 更新头像图片
+                if (info.image) {
+                    const imagePath = `../assets/cleaner/images/listing/${info.image}`;
+                    const imageElements = document.querySelectorAll('.tu-profileview figure img, .tu-productorder-content figure img');
+                    imageElements.forEach(el => {
+                        el.src = imagePath;
+                        el.alt = info.name;
+                    });
+                }
+            }
+
+            // 页面加载完成后更新信息
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateTutorInfo);
+            } else {
+                updateTutorInfo();
+            }
+        })();
+    </script>
 </head>
 <body>
 	<!-- HEADER START -->
@@ -86,13 +169,13 @@
                 <div class="collapse navbar-collapse tu-themenav" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="search-listing.html">
+                            <a class="nav-link" href="cleaner-search-listing.html">
                                 Online classes
                                 <span class="tu-tag">NEW</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="search-listing.html">Learning material<span class="tu-tag tu-bggreen">FREE</span></a>
+                            <a class="nav-link" href="cleaner-search-listing.html">Learning material<span class="tu-tag tu-bggreen">FREE</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">Success stories</a>
@@ -121,7 +204,7 @@
                                     <a href="javascript:void(0)">Provider listings</a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="search-listing.html">Provider listings v1</a>
+                                            <a href="cleaner-search-listing.html">Provider listings v1</a>
                                         </li>
                                         <li>
                                             <a href="search-listing-two.html">Provider listings v2</a>
@@ -129,7 +212,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="tutor-detail.html">Tutor Detail</a>
+                                    <a href="cleaner-tutor-detail.html">Tutor Detail</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="javascript:void(0);">Blogs</a>
@@ -214,32 +297,32 @@
                             <span class="tu-cardtag"></span>
                             <div class="tu-profileview">
                                 <figure>
-                                    <img src="../assets/cleaner/images/tutordetail/img-01.jpg" alt="image-description">
+                                    <img src="{{IMAGE_PATH}}" alt="{{NAME}}">
                                 </figure>
                                 <div class="tu-protutorinfo">
                                     <div class="tu-protutordetail">
                                         <div class="tu-productorder-content">
                                             <figure>
-                                                <img src="../assets/cleaner/images/tutordetail/img-01.jpg" alt="images">
+                                                <img src="{{IMAGE_PATH}}" alt="{{NAME}}">
                                             </figure>
                                             <div class="tu-product-title">
-                                                <h3>Armando weber <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h3>
+                                                <h3>{{NAME}} <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h3>
                                                 <h5>Spreading knowledge everywhere that's all I do</h5>
                                             </div>
                                             <div class="tu-listinginfo_price">
                                                 <span>Starting from:</span>
-                                                <h4>$562.32/hr</h4>
+                                                <h4>${{PRICE}}/hr</h4>
                                             </div>
                                         </div>
                                         <ul class="tu-tutorreview">
                                             <li>
-                                                <span><i class="fa fa-star tu-coloryellow"> <em>4.5<span>/5.0</span></em> </i>  <em>(4,448)</em></span>
+                                                <span><i class="fa fa-star tu-coloryellow"> <em>{{RATING}}<span>/5.0</span></em> </i>  <em>({{REVIEWS}})</em></span>
                                             </li>
                                             <li>
                                                 <span><i class="fa fa-check-circle tu-colorgreen"><em>95%</em></i><em>Job compeletion</em></span>
                                             </li>
                                             <li>
-                                                <span><i class="icon icon-map-pin"><span>Sacramento, CA</span></i></span>
+                                                <span><i class="icon icon-map-pin"><span>{{LOCATION}}</span></i></span>
                                             </li>
                                         </ul>	
                                         <div class="tu-detailitem">
@@ -268,9 +351,9 @@
                                     <li>
                                         <a class="tu-linkheart" href="javascript:void(0);"><i class="icon icon-heart"></i><span>Save</span></a>
                                     </li>
-                                    <li><a href="login.html" class="tu-secbtn">Let’s talk now</a></li>
+                                    <li><a href="login.html" class="tu-secbtn">Let's talk now</a></li>
                                     <li>
-                                        <a href="tutor-detail.html" class="tu-primbtn">Book a tution</a>
+                                        <a href="cleaner-tutor-detail.html" class="tu-primbtn">Book a tution</a>
                                     </li>
                                 </ul>
                             </div>
@@ -413,28 +496,28 @@
                                                 </div>
                                                 <ul class="tu-serviceslist">
                                                     <li>
-                                                        <a href="search-listing.html">Computer Science</a>
+                                                        <a href="cleaner-search-listing.html">Computer Science</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Engineering - Comupter</a>
+                                                        <a href="cleaner-search-listing.html">Engineering - Comupter</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Mathematics</a>
+                                                        <a href="cleaner-search-listing.html">Mathematics</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">General Science</a>
+                                                        <a href="cleaner-search-listing.html">General Science</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Islamiat</a>
+                                                        <a href="cleaner-search-listing.html">Islamiat</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Computer langugages</a>
+                                                        <a href="cleaner-search-listing.html">Computer langugages</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">English</a>
+                                                        <a href="cleaner-search-listing.html">English</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Story Telling</a>
+                                                        <a href="cleaner-search-listing.html">Story Telling</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -444,28 +527,28 @@
                                                 </div>
                                                 <ul class="tu-serviceslist">
                                                     <li>
-                                                        <a href="search-listing.html">Engineering - Comupter</a>
+                                                        <a href="cleaner-search-listing.html">Engineering - Comupter</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Mathematics</a>
+                                                        <a href="cleaner-search-listing.html">Mathematics</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Computer Science</a>
+                                                        <a href="cleaner-search-listing.html">Computer Science</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Islamiat</a>
+                                                        <a href="cleaner-search-listing.html">Islamiat</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">General Science</a>
+                                                        <a href="cleaner-search-listing.html">General Science</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">English</a>
+                                                        <a href="cleaner-search-listing.html">English</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Story Telling</a>
+                                                        <a href="cleaner-search-listing.html">Story Telling</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Computer langugages</a>
+                                                        <a href="cleaner-search-listing.html">Computer langugages</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -475,22 +558,22 @@
                                                 </div>
                                                 <ul class="tu-serviceslist">
                                                     <li>
-                                                        <a href="search-listing.html">Add Maths</a>
+                                                        <a href="cleaner-search-listing.html">Add Maths</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Business Applied</a>
+                                                        <a href="cleaner-search-listing.html">Business Applied</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Add English</a>
+                                                        <a href="cleaner-search-listing.html">Add English</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Business Applied</a>
+                                                        <a href="cleaner-search-listing.html">Business Applied</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">English</a>
+                                                        <a href="cleaner-search-listing.html">English</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Relegious Knows</a>
+                                                        <a href="cleaner-search-listing.html">Relegious Knows</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -500,37 +583,37 @@
                                                 </div>
                                                 <ul class="tu-serviceslist">
                                                     <li>
-                                                        <a href="search-listing.html">Physical education</a>
+                                                        <a href="cleaner-search-listing.html">Physical education</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Computer Science</a>
+                                                        <a href="cleaner-search-listing.html">Computer Science</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">History</a>
+                                                        <a href="cleaner-search-listing.html">History</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Business Applied</a>
+                                                        <a href="cleaner-search-listing.html">Business Applied</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Add English</a>
+                                                        <a href="cleaner-search-listing.html">Add English</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Advanced English</a>
+                                                        <a href="cleaner-search-listing.html">Advanced English</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Basic French</a>
+                                                        <a href="cleaner-search-listing.html">Basic French</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Learn ESL</a>
+                                                        <a href="cleaner-search-listing.html">Learn ESL</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Literacy</a>
+                                                        <a href="cleaner-search-listing.html">Literacy</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Sport Btec</a>
+                                                        <a href="cleaner-search-listing.html">Sport Btec</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Media Study</a>
+                                                        <a href="cleaner-search-listing.html">Media Study</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -540,40 +623,40 @@
                                                 </div>
                                                 <ul class="tu-serviceslist">
                                                     <li>
-                                                        <a href="search-listing.html">Typescript</a>
+                                                        <a href="cleaner-search-listing.html">Typescript</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">C#</a>
+                                                        <a href="cleaner-search-listing.html">C#</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Azure</a>
+                                                        <a href="cleaner-search-listing.html">Azure</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Spring</a>
+                                                        <a href="cleaner-search-listing.html">Spring</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Redux</a>
+                                                        <a href="cleaner-search-listing.html">Redux</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Ionic</a>
+                                                        <a href="cleaner-search-listing.html">Ionic</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">MFC (old framework-legacy)</a>
+                                                        <a href="cleaner-search-listing.html">MFC (old framework-legacy)</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Android</a>
+                                                        <a href="cleaner-search-listing.html">Android</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">iOS Developmen</a>
+                                                        <a href="cleaner-search-listing.html">iOS Developmen</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">OPC-UA</a>
+                                                        <a href="cleaner-search-listing.html">OPC-UA</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Express</a>
+                                                        <a href="cleaner-search-listing.html">Express</a>
                                                     </li>
                                                     <li>
-                                                        <a href="search-listing.html">Node.js</a>
+                                                        <a href="cleaner-search-listing.html">Node.js</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -843,7 +926,7 @@
                                                                 <input type="checkbox" id="termsconditions" name="termsconditions">
                                                                 <label for="termsconditions"><span>I have read and agree to all <a href="javascript:void(0);">Terms &amp; conditions</a></span></label>
                                                             </div>
-                                                            <a href="tutor-detail.html" class="tu-primbtn-lg tu-submit-reviews" data-profile_id=""><span>Submit</span><i class="icon icon-chevron-right"></i></a>
+                                                            <a href="cleaner-tutor-detail.html" class="tu-primbtn-lg tu-submit-reviews" data-profile_id=""><span>Submit</span><i class="icon icon-chevron-right"></i></a>
                                                             <input type="hidden" name="profile_id" value="584">
                                                             <input type="hidden" name="user_id" value="691">
                                                         </div>
@@ -874,7 +957,7 @@
                             <div class="col-12 col-md-6 col-lg-4 col-xl-6 col-xxl-4">
                                 <div class="tu-featureitem">
                                     <figure>
-                                        <a href="tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-04.jpg" alt="image-description"></a>
+                                        <a href="cleaner-tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-04.jpg" alt="image-description"></a>
                                         <span class="tu-featuretag">FEATURED</span>
                                     </figure>
                                     <div class="tu-authorinfo">
@@ -883,7 +966,7 @@
                                                 <img src="../assets/cleaner/images/index/professionol/img-04.jpg" alt="image-description">
                                             </figure>
                                             <div class="tu-authorname">
-                                                <h5><a href="tutor-detail.html"> William Williams</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
+                                                <h5><a href="cleaner-tutor-detail.html"> William Williams</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
                                                 <span>Nashville, IL</span>
                                             </div>
                                             <ul class="tu-authorlist">
@@ -917,7 +1000,7 @@
                             <div class="col-12 col-md-6 col-lg-4 col-xl-6 col-xxl-4">
                                 <div class="tu-featureitem">
                                     <figure>
-                                        <a href="tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-02.jpg" alt="image-description"></a>
+                                        <a href="cleaner-tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-02.jpg" alt="image-description"></a>
                                         <span class="tu-featuretag">FEATURED</span>
                                     </figure>
                                     <div class="tu-authorinfo">
@@ -926,7 +1009,7 @@
                                                 <img src="../assets/cleaner/images/index/professionol/img-02.jpg" alt="image-description">
                                             </figure>
                                             <div class="tu-authorname">
-                                                <h5><a href="tutor-detail.html">Gwendolyn Parker</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
+                                                <h5><a href="cleaner-tutor-detail.html">Gwendolyn Parker</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
                                                 <span>Las Vegas, TN</span>
                                             </div>
                                             <ul class="tu-authorlist">
@@ -960,7 +1043,7 @@
                             <div class="col-12 col-md-6 col-lg-4 col-xl-6 col-xxl-4">
                                 <div class="tu-featureitem">
                                     <figure>
-                                        <a href="tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-01.jpg" alt="image-description"></a>
+                                        <a href="cleaner-tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-01.jpg" alt="image-description"></a>
                                         <span class="tu-featuretag">FEATURED</span>
                                     </figure>
                                     <div class="tu-authorinfo">
@@ -969,7 +1052,7 @@
                                                 <img src="../assets/cleaner/images/index/professionol/img-01.jpg" alt="image-description">
                                             </figure>
                                             <div class="tu-authorname">
-                                                <h5><a href="tutor-detail.html"> Dwayne Garrett</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
+                                                <h5><a href="cleaner-tutor-detail.html"> Dwayne Garrett</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
                                                 <span>Arlington, TN</span>
                                             </div>
                                             <ul class="tu-authorlist">
@@ -1091,21 +1174,21 @@
                             <div class="tu-footercontent">
                                 <h5 class="tu-footertitle">Tutor by subjects</h5>
                                <ul class="tu-footerlist">
-                                    <li><a href="search-listing.html">General mathematics</a></li>
-                                    <li><a href="search-listing.html">World languages</a></li>
-                                    <li><a href="search-listing.html">Advanced placement</a></li>
-                                    <li><a href="search-listing.html">Advance science play</a></li>
-                                    <li><a href="search-listing.html">Social sciences</a></li>
-                                    <li><a href="search-listing.html">International baccalaureate®</a></li>
-                                    <li><a href="search-listing.html">Grooming technology</a></li>
-                                    <li><a href="search-listing.html">Maketing business</a></li>
-                                    <li><a href="search-listing.html">ACT® test prep</a></li>
-                                    <li><a href="search-listing.html">English communications</a></li>
-                                    <li><a href="search-listing.html">Career support</a></li>
-                                    <li><a href="search-listing.html">PSAT/NMSQT® &amp; SAT® prep</a></li>
-                                    <li><a href="search-listing.html">Content writing</a></li>
-                                    <li><a href="search-listing.html">Student success skills</a></li>
-                                    <li class="tu-footerlist-explore"><a href="search-listing.html">Explore all</a></li>
+                                    <li><a href="cleaner-search-listing.html">General mathematics</a></li>
+                                    <li><a href="cleaner-search-listing.html">World languages</a></li>
+                                    <li><a href="cleaner-search-listing.html">Advanced placement</a></li>
+                                    <li><a href="cleaner-search-listing.html">Advance science play</a></li>
+                                    <li><a href="cleaner-search-listing.html">Social sciences</a></li>
+                                    <li><a href="cleaner-search-listing.html">International baccalaureate®</a></li>
+                                    <li><a href="cleaner-search-listing.html">Grooming technology</a></li>
+                                    <li><a href="cleaner-search-listing.html">Maketing business</a></li>
+                                    <li><a href="cleaner-search-listing.html">ACT® test prep</a></li>
+                                    <li><a href="cleaner-search-listing.html">English communications</a></li>
+                                    <li><a href="cleaner-search-listing.html">Career support</a></li>
+                                    <li><a href="cleaner-search-listing.html">PSAT/NMSQT® &amp; SAT® prep</a></li>
+                                    <li><a href="cleaner-search-listing.html">Content writing</a></li>
+                                    <li><a href="cleaner-search-listing.html">Student success skills</a></li>
+                                    <li class="tu-footerlist-explore"><a href="cleaner-search-listing.html">Explore all</a></li>
                                 </ul>
                             </div>
                             <div class="tu-footercontent-two">
@@ -1114,15 +1197,15 @@
                                 </h5>
                                 <ul class="tu-footerlist">
                                     <li><a href="javascript:void(0);">Online science classes</a></li>
-                                    <li><a href="search-listing.html">Online islamiat classes</a></li>
-                                    <li><a href="search-listing.html">Online mathemetic classes</a></li>
-                                    <li><a href="search-listing.html">Online java classes</a></li>
-                                    <li><a href="search-listing.html">Online computer classes</a></li>
-                                    <li><a href="search-listing.html">IBM python Analyst</a></li>
-                                    <li><a href="search-listing.html">Online geographic classes</a></li>
-                                    <li><a href="search-listing.html">Online C programming classes</a></li>
-                                    <li><a href="search-listing.html">Online statistic classes</a></li>
-                                    <li class="tu-footerlist-explore"><a href="search-listing.html">Explore all</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online islamiat classes</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online mathemetic classes</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online java classes</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online computer classes</a></li>
+                                    <li><a href="cleaner-search-listing.html">IBM python Analyst</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online geographic classes</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online C programming classes</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online statistic classes</a></li>
+                                    <li class="tu-footerlist-explore"><a href="cleaner-search-listing.html">Explore all</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1133,14 +1216,14 @@
                                 <h5 class="tu-footertitle">Useful links</h5>
                                 <ul class="tu-footerlist">
                                     <li><a href="how-it-work.html">About</a></li>
-                                    <li><a href="search-listing.html">Success stories</a></li>
-                                    <li><a href="search-listing.html">Online classes</a></li>
+                                    <li><a href="cleaner-search-listing.html">Success stories</a></li>
+                                    <li><a href="cleaner-search-listing.html">Online classes</a></li>
                                     <li><a href="login.html">Join our community</a></li>
-                                    <li><a href="search-listing.html">Courses</a></li>
+                                    <li><a href="cleaner-search-listing.html">Courses</a></li>
                                     <li><a href="login.html">Sign in now</a></li>
-                                    <li><a href="search-listing.html">Programs &amp; degrees</a></li>
+                                    <li><a href="cleaner-search-listing.html">Programs &amp; degrees</a></li>
                                     <li><a href="how-it-work.html">How it works</a></li>
-                                    <li><a href="search-listing.html">Learning materials</a></li>
+                                    <li><a href="cleaner-search-listing.html">Learning materials</a></li>
                                     <li><a href="index.html">F.A.Q</a></li>
                                 </ul>
                             </div>

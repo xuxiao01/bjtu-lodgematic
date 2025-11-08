@@ -144,6 +144,24 @@ function processMainFiles(srcDir, outDir, lang) {
         }
       });
       
+      // 如果是列表页，更新清洁工详情页链接
+      if (entry.name === 'cleaner-search-listing.html') {
+        const cleanersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'src/data/cleaners.json'), 'utf-8'));
+        const cleanersPath = isZhDir ? '../cleaners/' : 'cleaners/';
+        
+        cleanersData.forEach(cleaner => {
+          // 更新所有指向cleaner-tutor-detail.html的链接
+          document.querySelectorAll(`a[href*="cleaner-tutor-detail.html"]`).forEach(link => {
+            const href = link.getAttribute('href');
+            // 检查是否包含这个清洁工的信息
+            if (href.includes(`name=${encodeURIComponent(cleaner.name)}`) || 
+                href.includes(`name=${cleaner.name.replace(' ', '%20')}`)) {
+              link.setAttribute('href', `${cleanersPath}${cleaner.slug}.html`);
+            }
+          });
+        });
+      }
+      
       if (dict.title) document.title = dict.title;
       let metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) metaDesc.setAttribute('content', dict.description || '');
@@ -161,3 +179,73 @@ processMainFiles(mainSrcDir, mainDistEn, 'en');
 processMainFiles(mainSrcDir, mainDistZh, 'zh');
 
 console.log('✅ 已输出 main/ 目录下的 HTML 文件');
+
+// 生成清洁工详情页
+function generateCleanerPages() {
+  const cleanersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'src/data/cleaners.json'), 'utf-8'));
+  const templatePath = path.join(__dirname, 'src/main/cleaner-tutor-detail.html');
+  const template = fs.readFileSync(templatePath, 'utf-8');
+  
+  // 为英文和中文分别生成，放在main目录下
+  const langs = [
+    { code: 'en', dir: path.join(distDir, 'main') },
+    { code: 'zh', dir: path.join(distDir, 'zh/main') }
+  ];
+  
+  langs.forEach(({ code, dir }) => {
+    const cleanersDir = path.join(dir, 'cleaners');
+    fs.mkdirSync(cleanersDir, { recursive: true });
+    
+    // 根据语言确定资源路径（从 main/cleaners/ 到 assets/）
+    const assetPrefix = (code === 'en') ? '../../assets/' : '../../../assets/';
+    
+    cleanersData.forEach(cleaner => {
+      let html = template;
+      
+      // 替换占位符
+      const replacements = {
+        '{{TITLE}}': cleaner.name,
+        '{{DESCRIPTION}}': `${cleaner.name} - Professional cleaner in ${cleaner.location}. Rating: ${cleaner.rating}/5.0 with ${parseInt(cleaner.reviews).toLocaleString()} reviews. Starting from $${cleaner.price}/hr.`,
+        '{{NAME}}': cleaner.name,
+        '{{RATING}}': cleaner.rating,
+        '{{REVIEWS}}': parseInt(cleaner.reviews).toLocaleString(),
+        '{{LOCATION}}': cleaner.location,
+        '{{PRICE}}': parseFloat(cleaner.price).toFixed(2),
+        '{{IMAGE_PATH}}': `${assetPrefix}cleaner/images/listing/${cleaner.image}`
+      };
+      
+      Object.keys(replacements).forEach(placeholder => {
+        html = html.replace(new RegExp(placeholder.replace(/[{}]/g, '\\$&'), 'g'), replacements[placeholder]);
+      });
+      
+      // 处理资源路径
+      const dom = new JSDOM(html);
+      const { document } = dom.window;
+      
+      ['src', 'href', 'data-src', 'data-href'].forEach(attr => {
+        document.querySelectorAll(`[${attr}]`).forEach(el => {
+          const val = el.getAttribute(attr);
+          if (val && val.startsWith('../assets/')) {
+            // 从 ../assets/cleaner/... 改为 ../../assets/cleaner/...
+            // assetPrefix 已经是 ../../assets/，所以只需要添加 cleaner/... 部分
+            const restPath = val.replace('../assets/', ''); // 获取 'cleaner/...' 部分
+            el.setAttribute(attr, assetPrefix + restPath);
+          } else if (val && val.startsWith('assets/')) {
+            el.setAttribute(attr, assetPrefix + val.substring(7)); // 跳过 'assets/'
+          } else if (val && val.startsWith('../../assets/')) {
+            // 如果已经是 ../../assets/，直接使用
+            el.setAttribute(attr, val);
+          }
+        });
+      });
+      
+      // 生成文件名（使用slug）
+      const outputFile = path.join(cleanersDir, `${cleaner.slug}.html`);
+      fs.writeFileSync(outputFile, dom.serialize(), 'utf-8');
+      console.log(`✅ 已生成清洁工页面: ${outputFile}`);
+    });
+  });
+}
+
+generateCleanerPages();
+console.log('✅ 已生成所有清洁工详情页');
