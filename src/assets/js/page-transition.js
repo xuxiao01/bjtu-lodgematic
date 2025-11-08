@@ -196,6 +196,28 @@
         return loader;
     }
 
+    /**
+     * 处理浏览器回退/前进按钮
+     * 确保回退时不会一直显示 loading
+     */
+    window.addEventListener('popstate', function(e) {
+        // 回退时移除可能存在的加载器
+        const existingLoader = document.querySelector('.page-transition-loader');
+        if (existingLoader) {
+            existingLoader.remove();
+        }
+    });
+
+    // 页面可见性变化时，确保移除加载器（防止页面切换时卡住）
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            const existingLoader = document.querySelector('.page-transition-loader');
+            if (existingLoader) {
+                existingLoader.remove();
+            }
+        }
+    });
+
     // 导出到全局（可选）
     window.PageTransition = {
         navigate: showLoaderAndNavigate
