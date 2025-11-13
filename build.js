@@ -20,11 +20,11 @@ langs.forEach(({ code, out, dir }) => {
   const dict = i18n[code] || {};
 
   // 资源路径前缀
-  const assetPrefix = (dir === distDir) ? 'assets/' : '../assets/';
+  const assetPrefix = (dir === distDir) ? '/assets/' : '/assets/';
   ['src', 'href', 'data-src', 'data-href'].forEach(attr => {
     document.querySelectorAll(`[${attr}]`).forEach(el => {
       const val = el.getAttribute(attr);
-      if (val && val.startsWith('assets/')) {
+      if (val && val.startsWith('/assets/')) {
         el.setAttribute(attr, assetPrefix + val.slice(7));
       }
     });
@@ -105,16 +105,16 @@ function processMainFiles(srcDir, outDir, lang) {
       
       // 根据是否为中文目录来确定资产路径
       const isZhDir = outDir.includes(path.sep + 'zh' + path.sep) || outDir.endsWith(path.sep + 'zh');
-      const assetPrefix = isZhDir ? '../../assets/' : '../assets/';
+      const assetPrefix = isZhDir ? '/assets/' : '/assets/';
 
       ['src', 'href', 'data-src', 'data-href'].forEach(attr => {
         document.querySelectorAll(`[${attr}]`).forEach(el => {
           const val = el.getAttribute(attr);
-          if (val && val.startsWith('assets/')) {
+          if (val && val.startsWith('/assets/')) {
             el.setAttribute(attr, assetPrefix + val.slice(7));
           } else if (val && val.startsWith('/assets/')) {
             el.setAttribute(attr, assetPrefix + val.slice(8));
-          } else if (val && val.startsWith('../assets/')) {
+          } else if (val && val.startsWith('/assets/')) {
             el.setAttribute(attr, assetPrefix + val.slice(10));
           }
         });
@@ -197,7 +197,7 @@ function generateCleanerPages() {
     fs.mkdirSync(cleanersDir, { recursive: true });
     
     // 根据语言确定资源路径（从 main/cleaners/ 到 assets/）
-    const assetPrefix = (code === 'en') ? '../../assets/' : '../../../assets/';
+    const assetPrefix = (code === 'en') ? '/assets/' : '/assets/';
     
     cleanersData.forEach(cleaner => {
       let html = template;
@@ -225,15 +225,15 @@ function generateCleanerPages() {
       ['src', 'href', 'data-src', 'data-href'].forEach(attr => {
         document.querySelectorAll(`[${attr}]`).forEach(el => {
           const val = el.getAttribute(attr);
-          if (val && val.startsWith('../assets/')) {
-            // 从 ../assets/cleaner/... 改为 ../../assets/cleaner/...
-            // assetPrefix 已经是 ../../assets/，所以只需要添加 cleaner/... 部分
-            const restPath = val.replace('../assets/', ''); // 获取 'cleaner/...' 部分
+          if (val && val.startsWith('/assets/')) {
+            // 从 /assets/cleaner/... 改为 /assets/cleaner/...
+            // assetPrefix 已经是 /assets/，所以只需要添加 cleaner/... 部分
+            const restPath = val.replace('/assets/', ''); // 获取 'cleaner/...' 部分
             el.setAttribute(attr, assetPrefix + restPath);
-          } else if (val && val.startsWith('assets/')) {
-            el.setAttribute(attr, assetPrefix + val.substring(7)); // 跳过 'assets/'
-          } else if (val && val.startsWith('../../assets/')) {
-            // 如果已经是 ../../assets/，直接使用
+          } else if (val && val.startsWith('/assets/')) {
+            el.setAttribute(attr, assetPrefix + val.substring(7)); // 跳过 '/assets/'
+          } else if (val && val.startsWith('/assets/')) {
+            // 如果已经是 /assets/，直接使用
             el.setAttribute(attr, val);
           }
         });

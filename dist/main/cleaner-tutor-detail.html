@@ -7,15 +7,24 @@
 	<meta property="og:description" content="{{DESCRIPTION}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="icon" href="../assets/cleaner/images/favicon.png" type="image/x-icon">
-	<link rel="stylesheet" href="../assets/cleaner/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets/cleaner/css/feather.css">
-	<link rel="stylesheet" href="../assets/cleaner/css/fontawesome/fontawesome.css">
-    <link rel="stylesheet" href="../assets/cleaner/css/select2.min.css">
-    <link rel="stylesheet" href="../assets/cleaner/css/splide.min.css">
-    <link rel="stylesheet" href="../assets/cleaner/css/venobox.min.css">
-	<link rel="stylesheet" href="../assets/cleaner/css/main.css">
-    <link rel="stylesheet" href="../assets/cleaner/css/jquery.mCustomScrollbar.min.css">
+	<link rel="icon" href="/assets//cleaner/images/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="/assets//cleaner/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets//cleaner/css/feather.css">
+	<link rel="stylesheet" href="/assets//cleaner/css/fontawesome/fontawesome.css">
+    <link rel="stylesheet" href="/assets//cleaner/css/select2.min.css">
+    <link rel="stylesheet" href="/assets//cleaner/css/splide.min.css">
+    <link rel="stylesheet" href="/assets//cleaner/css/venobox.min.css">
+	<link rel="stylesheet" href="/assets//cleaner/css/main.css">
+
+    <!-- Lodgematic global header/footer dependencies -->
+    <script src="/assets//js/app-head-bs.js"></script>
+    <link rel="stylesheet" href="/assets//js/uni-core/css/uni-core.min.css">
+    <link rel="stylesheet" href="/assets//css/unicons.min.css">
+    <link rel="stylesheet" href="/assets//css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets//css/prettify.min.css">
+    <link rel="stylesheet" href="/assets//css/magic-cursor.min.css">
+    <link rel="stylesheet" href="/assets//css/theme-six.css">
+    <link rel="stylesheet" href="/assets//cleaner/css/jquery.mCustomScrollbar.min.css">
     
     <!-- Page transition and preloader scripts -->
     <script>
@@ -76,14 +85,18 @@
     <!-- Load tutor info from URL parameters (for development) -->
     <script>
         (function() {
-            // 检查是否有占位符（说明是模板，需要从URL参数加载）
-            const hasPlaceholders = document.body.innerHTML.includes('{{NAME}}');
-            if (!hasPlaceholders) return; // 如果是构建后的页面，不需要这个脚本
-            
-            // 获取URL参数
-            function getUrlParams() {
+            function updateTutorInfo() {
                 const params = new URLSearchParams(window.location.search);
-                return {
+                if (![...params.keys()].length) {
+                    return; // 没有查询参数，说明是构建后的静态页面
+                }
+
+                const body = document.body;
+                if (!body || !body.innerHTML.includes('{{NAME}}')) {
+                    return; // 不是占位符模板，直接跳过
+                }
+
+                const info = {
                     name: params.get('name') || 'Armando weber',
                     rating: params.get('rating') || '4.5',
                     reviews: params.get('reviews') || '4448',
@@ -91,13 +104,7 @@
                     price: params.get('price') || '562.32',
                     image: params.get('image') || 'img-01.png'
                 };
-            }
 
-            // 更新页面信息
-            function updateTutorInfo() {
-                const info = getUrlParams();
-                
-                // 更新姓名 (h3标题)
                 const nameH3 = document.querySelector('.tu-product-title h3');
                 if (nameH3) {
                     const checkIcon = nameH3.querySelector('i');
@@ -109,13 +116,11 @@
                     }
                 }
 
-                // 更新评分和评论数 (第一个li)
                 const ratingLi = document.querySelector('.tu-tutorreview li:first-child span');
                 if (ratingLi && ratingLi.querySelector('.fa-star')) {
                     ratingLi.innerHTML = `<i class="fa fa-star tu-coloryellow"> <em>${info.rating}<span>/5.0</span></em> </i>  <em>(${parseInt(info.reviews).toLocaleString()})</em>`;
                 }
 
-                // 更新位置 (最后一个li)
                 const locationLi = document.querySelector('.tu-tutorreview li:last-child span');
                 if (locationLi) {
                     const icon = locationLi.querySelector('i.icon-map-pin');
@@ -129,15 +134,13 @@
                     }
                 }
 
-                // 更新价格
                 const priceH4 = document.querySelector('.tu-listinginfo_price h4');
                 if (priceH4) {
                     priceH4.textContent = `$${parseFloat(info.price).toFixed(2)}/hr`;
                 }
 
-                // 更新头像图片
                 if (info.image) {
-                    const imagePath = `../assets/cleaner/images/listing/${info.image}`;
+                    const imagePath = `/assets/cleaner/images/listing/${info.image}`;
                     const imageElements = document.querySelectorAll('.tu-profileview figure img, .tu-productorder-content figure img');
                     imageElements.forEach(el => {
                         el.src = imagePath;
@@ -146,7 +149,6 @@
                 }
             }
 
-            // 页面加载完成后更新信息
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', updateTutorInfo);
             } else {
@@ -156,137 +158,12 @@
     </script>
 </head>
 <body>
-	<!-- HEADER START -->
-    <header class="tu-header">
-        <nav class="navbar navbar-expand-xl tu-navbar">
-            <div class="container-fluid">
-                <strong>
-                    <a class="navbar-brand" href="index.html"><img src="../assets/cleaner/images/logo.png" alt="Logo"></a>
-                </strong>
-                <button class="tu-menu" aria-label="Main Menu" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse">
-                    <i class="icon icon-menu"></i>
-                </button>
-                <div class="collapse navbar-collapse tu-themenav" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="cleaner-search-listing.html">
-                                Online classes
-                                <span class="tu-tag">NEW</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cleaner-search-listing.html">Learning material<span class="tu-tag tu-bggreen">FREE</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Success stories</a>
-                        </li>
-                        <li class="menu-item-has-children nav-item">
-                            <a class="active" href="javascript:void(0);">Pages</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="javascript:void(0)">Home Pages</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="index.html">Home</a>
-                                        </li>
-                                        <li>
-                                            <a href="index-without-login.html">Home v2 <em class="tu-menutag">without login</em></a>
-                                        </li>
-                                        <li>
-                                            <a href="indexv2.html">Home v3</a>
-                                        </li>
-                                        <li>
-                                            <a href="indexv3.html">Home v4</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="javascript:void(0)">Provider listings</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="cleaner-search-listing.html">Provider listings v1</a>
-                                        </li>
-                                        <li>
-                                            <a href="search-listing-two.html">Provider listings v2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="cleaner-tutor-detail.html">Tutor Detail</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="javascript:void(0);">Blogs</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="blog-grid-left.html">Blog list</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-grid-right.html">Blog list <em class="tu-menutag">Right sidebar</em></a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-detail-left.html">Blog detail</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-detail-right.html">Blog detail <em class="tu-menutag">Right sidebar</em></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="javascript:void(0);">Other pages</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="how-it-work.html">How it work</a>
-                                        </li>
-                                        <li>
-                                            <a href="package.html">Packges</a>
-                                        </li>
-                                        <li>
-                                            <a href="login.html">Login</a>
-                                        </li>
-                                        <li>
-                                            <a href="signup.html">Sign up</a>
-                                        </li>
-                                        <li>
-                                            <a href="lost-password.html">Lost password</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <ul class="nav-item tu-afterlogin">
-                    <li>
-                        <a class="nav-link" href="index.html"><span class="icon icon-message-square"><i class="tu-messagenoti">4</i></span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="index.html"><span class="icon icon-bell"><i class="tu-messagenoti">3</i></span></a>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <strong><a class="nav-link" href="javascript:void(0);"><img src="../assets/cleaner/images/login.png" alt="image-description"></a></strong>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="profile-setting-a.html"><i class="icon icon-user"></i>Personal details</a>
-                            </li>
-                            <li>
-                                <a href="profile-setting-b.html"><i class="icon icon-phone"></i>Contact details</a>
-                            </li>
-                            <li>
-                                <a href="profile-setting-c.html"><i class="icon icon-book"></i>Education</a>
-                            </li>
-                            <li>
-                                <a href="profile-setting-d.html"><i class="icon icon-book-open"></i>Subjects I can teach</a>
-                            </li>
-                            <li>
-                                <a href="profile-setting-e.html"><i class="icon icon-image"></i>Media gallery</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <!-- HEADER END -->
+    <!-- GDPR modal placeholder -->
+    <div id="gdpr"></div>
+
+	<!-- Header start -->
+    <div id="header"></div>
+    <!-- Header end -->
     <!-- MAIN START -->
 	<main class="tu-main tu-bgmain">
         <section class="tu-main-section">
@@ -673,14 +550,14 @@
                                                         <li class="splide__slide">
                                                             <figure class="tu-sync__content">
                                                                 <a class="tu-themegallery" data-gall="gall" href="images/tutordetail/slider/img-01.jpg">
-                                                                    <img src="../assets/cleaner/images/tutordetail/slider/img-01.jpg" alt="Image Description">
+                                                                    <img src="/assets//cleaner/images/tutordetail/slider/img-01.jpg" alt="Image Description">
                                                                 </a>
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-sync__content">
                                                                 <a class="tu-themegallery" data-vbtype="video" data-gall="gall" href="https://www.youtube.com/watch?v=XxxIEGzhIG8" data-autoplay="true">
-                                                                    <img src="../assets/cleaner/images/tutordetail/slider/img-02.jpg" alt="Image Description">
+                                                                    <img src="/assets//cleaner/images/tutordetail/slider/img-02.jpg" alt="Image Description">
                                                                     <span class="tu-servicesvideo"></span>
                                                                 </a>
                                                             </figure>
@@ -688,35 +565,35 @@
                                                         <li class="splide__slide">
                                                             <figure class="tu-sync__content">
                                                                 <a class="tu-themegallery" data-gall="gall" href="images/tutordetail/slider/img-03.jpg">
-                                                                    <img src="../assets/cleaner/images/tutordetail/slider/img-03.jpg" alt="Image Description">
+                                                                    <img src="/assets//cleaner/images/tutordetail/slider/img-03.jpg" alt="Image Description">
                                                                 </a>
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-sync__content">
                                                                 <a class="tu-themegallery" data-gall="gall" href="images/tutordetail/slider/img-04.jpg">
-                                                                    <img src="../assets/cleaner/images/tutordetail/slider/img-04.jpg" alt="Image Description">
+                                                                    <img src="/assets//cleaner/images/tutordetail/slider/img-04.jpg" alt="Image Description">
                                                                 </a>
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-sync__content">
                                                                 <a class="tu-themegallery" data-gall="gall" href="images/tutordetail/slider/img-05.jpg">
-                                                                    <img src="../assets/cleaner/images/tutordetail/slider/img-05.jpg" alt="Image Description">
+                                                                    <img src="/assets//cleaner/images/tutordetail/slider/img-05.jpg" alt="Image Description">
                                                                 </a>
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-sync__content">
                                                                 <a class="tu-themegallery" data-gall="gall" href="images/tutordetail/slider/img-06.jpg">
-                                                                    <img src="../assets/cleaner/images/tutordetail/slider/img-06.jpg" alt="Image Description">
+                                                                    <img src="/assets//cleaner/images/tutordetail/slider/img-06.jpg" alt="Image Description">
                                                                 </a>
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-sync__content">
                                                                 <a class="tu-themegallery" data-gall="gall" href="images/tutordetail/slider/img-07.jpg">
-                                                                    <img src="../assets/cleaner/images/tutordetail/slider/img-07.jpg" alt="Image Description">
+                                                                    <img src="/assets//cleaner/images/tutordetail/slider/img-07.jpg" alt="Image Description">
                                                                 </a>
                                                             </figure>
                                                         </li>
@@ -728,38 +605,38 @@
                                                     <ul class="splide__list">
                                                         <li class="splide__slide">
                                                             <figure class="tu-syncthumbnail__content">
-                                                                <img src="../assets/cleaner/images/tutordetail/slider/thumbnails/img-01.png" alt="Image Description">
+                                                                <img src="/assets//cleaner/images/tutordetail/slider/thumbnails/img-01.png" alt="Image Description">
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-syncthumbnail__content">
                                                                 <span class="tu-servicesvideo"></span>
-                                                                <img src="../assets/cleaner/images/tutordetail/slider/thumbnails/img-02.png" alt="Image Description">
+                                                                <img src="/assets//cleaner/images/tutordetail/slider/thumbnails/img-02.png" alt="Image Description">
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-syncthumbnail__content">
-                                                                <img src="../assets/cleaner/images/tutordetail/slider/thumbnails/img-03.png" alt="Image Description">
+                                                                <img src="/assets//cleaner/images/tutordetail/slider/thumbnails/img-03.png" alt="Image Description">
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-syncthumbnail__content">
-                                                                <img src="../assets/cleaner/images/tutordetail/slider/thumbnails/img-04.png" alt="Image Description">
+                                                                <img src="/assets//cleaner/images/tutordetail/slider/thumbnails/img-04.png" alt="Image Description">
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-syncthumbnail__content"> 
-                                                                <img src="../assets/cleaner/images/tutordetail/slider/thumbnails/img-05.png" alt="Image Description">
+                                                                <img src="/assets//cleaner/images/tutordetail/slider/thumbnails/img-05.png" alt="Image Description">
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-syncthumbnail__content">
-                                                                <img src="../assets/cleaner/images/tutordetail/slider/thumbnails/img-06.png" alt="Image Description">
+                                                                <img src="/assets//cleaner/images/tutordetail/slider/thumbnails/img-06.png" alt="Image Description">
                                                             </figure>
                                                         </li>
                                                         <li class="splide__slide">
                                                             <figure class="tu-syncthumbnail__content">
-                                                                <img src="../assets/cleaner/images/tutordetail/slider/thumbnails/img-07.png" alt="Image Description">
+                                                                <img src="/assets//cleaner/images/tutordetail/slider/thumbnails/img-07.png" alt="Image Description">
                                                             </figure>
                                                         </li>
                                                     </ul>
@@ -776,7 +653,7 @@
                                         <div class="tu-commentarea">
                                             <div class="tu-commentlist">
                                                 <figure>
-                                                    <img src="../assets/cleaner/images/tutordetail/review/img-01.png" alt="images">
+                                                    <img src="/assets//cleaner/images/tutordetail/review/img-01.png" alt="images">
                                                 </figure>
                                                 <div class="tu-coomentareaauth">
                                                     <div class="tu-commentright">
@@ -799,7 +676,7 @@
                                             </div>
                                             <div class="tu-commentlist">
                                                 <figure>
-                                                    <img src="../assets/cleaner/images/tutordetail/review/img-02.png" alt="images">
+                                                    <img src="/assets//cleaner/images/tutordetail/review/img-02.png" alt="images">
                                                 </figure>
                                                 <div class="tu-coomentareaauth">
                                                     <div class="tu-commentright">
@@ -820,7 +697,7 @@
                                             </div>
                                             <div class="tu-commentlist">
                                                 <figure>
-                                                    <img src="../assets/cleaner/images/tutordetail/review/img-03.png" alt="images">
+                                                    <img src="/assets//cleaner/images/tutordetail/review/img-03.png" alt="images">
                                                 </figure>
                                                 <div class="tu-coomentareaauth">
                                                     <div class="tu-commentright">
@@ -841,7 +718,7 @@
                                             </div>
                                             <div class="tu-commentlist">
                                                 <figure>
-                                                    <img src="../assets/cleaner/images/tutordetail/review/img-04.jpg" alt="images">
+                                                    <img src="/assets//cleaner/images/tutordetail/review/img-04.jpg" alt="images">
                                                 </figure>
                                                 <div class="tu-coomentareaauth">
                                                     <div class="tu-commentright">
@@ -862,7 +739,7 @@
                                             </div>
                                             <div class="tu-commentlist" style="display: none;">
                                                 <figure>
-                                                    <img src="../assets/cleaner/images/tutordetail/review/img-02.png" alt="images">
+                                                    <img src="/assets//cleaner/images/tutordetail/review/img-02.png" alt="images">
                                                 </figure>
                                                 <div class="tu-coomentareaauth">
                                                     <div class="tu-commentright">
@@ -957,13 +834,13 @@
                             <div class="col-12 col-md-6 col-lg-4 col-xl-6 col-xxl-4">
                                 <div class="tu-featureitem">
                                     <figure>
-                                        <a href="cleaner-tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-04.jpg" alt="image-description"></a>
+                                        <a href="cleaner-tutor-detail.html"><img src="/assets//cleaner/images/index/qualified/img-04.jpg" alt="image-description"></a>
                                         <span class="tu-featuretag">FEATURED</span>
                                     </figure>
                                     <div class="tu-authorinfo">
                                         <div class="tu-authordetail">
                                             <figure>
-                                                <img src="../assets/cleaner/images/index/professionol/img-04.jpg" alt="image-description">
+                                                <img src="/assets//cleaner/images/index/professionol/img-04.jpg" alt="image-description">
                                             </figure>
                                             <div class="tu-authorname">
                                                 <h5><a href="cleaner-tutor-detail.html"> William Williams</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
@@ -1000,13 +877,13 @@
                             <div class="col-12 col-md-6 col-lg-4 col-xl-6 col-xxl-4">
                                 <div class="tu-featureitem">
                                     <figure>
-                                        <a href="cleaner-tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-02.jpg" alt="image-description"></a>
+                                        <a href="cleaner-tutor-detail.html"><img src="/assets//cleaner/images/index/qualified/img-02.jpg" alt="image-description"></a>
                                         <span class="tu-featuretag">FEATURED</span>
                                     </figure>
                                     <div class="tu-authorinfo">
                                         <div class="tu-authordetail">
                                             <figure>
-                                                <img src="../assets/cleaner/images/index/professionol/img-02.jpg" alt="image-description">
+                                                <img src="/assets//cleaner/images/index/professionol/img-02.jpg" alt="image-description">
                                             </figure>
                                             <div class="tu-authorname">
                                                 <h5><a href="cleaner-tutor-detail.html">Gwendolyn Parker</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
@@ -1043,13 +920,13 @@
                             <div class="col-12 col-md-6 col-lg-4 col-xl-6 col-xxl-4">
                                 <div class="tu-featureitem">
                                     <figure>
-                                        <a href="cleaner-tutor-detail.html"><img src="../assets/cleaner/images/index/qualified/img-01.jpg" alt="image-description"></a>
+                                        <a href="cleaner-tutor-detail.html"><img src="/assets//cleaner/images/index/qualified/img-01.jpg" alt="image-description"></a>
                                         <span class="tu-featuretag">FEATURED</span>
                                     </figure>
                                     <div class="tu-authorinfo">
                                         <div class="tu-authordetail">
                                             <figure>
-                                                <img src="../assets/cleaner/images/index/professionol/img-01.jpg" alt="image-description">
+                                                <img src="/assets//cleaner/images/index/professionol/img-01.jpg" alt="image-description">
                                             </figure>
                                             <div class="tu-authorname">
                                                 <h5><a href="cleaner-tutor-detail.html"> Dwayne Garrett</a> <i class="icon icon-check-circle tu-greenclr" data-tippy-trigger="mouseenter" data-tippy-html="#tu-verifed" data-tippy-interactive="true" data-tippy-placement="top"></i></h5>
@@ -1142,129 +1019,9 @@
         </section>
 	</main>
 	<!-- MAIN END -->
-	<!-- FOOTER START -->
-    <footer>
-        <div class="tu-footerdark">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <strong class="tu-footerlogo">
-                            <a href="index.html"><img src="../assets/cleaner/images/logo_white.png" alt="Logo"></a>
-                        </strong>
-                        <p class="tu-footerdescription">Accusamus etidio dignissimos ducimus blanditiis praesentium volupta eleniti atquete corrupti quolores etmquasa molestias epturi sinteam occaecati cupiditate non providente mikume molareshe.</p>
-                        <ul class="tu-socialmedia">
-                            <li class="tu-facebookv3"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="tu-twitterv3"><a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li class="tu-linkedinv3"><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li class="tu-dribbblev3"><a href="https://dribbble.com/" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-                            <li class="tu-twitchv3"><a href="https://www.twitch.tv/" target="_blank"><i class="fab fa-twitch"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <h5 class="tu-footertitle">Feel free to share your question</h5>
-                        <ul class="tu-footerlist tu-footericonlist">
-                            <li><a href="tel:+6287777263549"><i class="icon icon-phone-call"></i><em>+62 877 77263549</em><span>( Mon to Sun 9am - 11pm GMT )</span></a></li>
-                            <li><a href="mailto:hello@youremailid.co.uk"><i class="icon icon-mail"></i><em>hello@youremailid.co.uk</em></a></li>
-                            <li><a href="tel:+681109998263"><i class="icon icon-printer"></i><em>+62 811 09998263</em></a></li>
-                            <li><a href="tel:(+33)775559375"><i class="fab fa-whatsapp"></i><em>(+33)7 75 55 9375</em><span>( Mon to Sun 9am - 11pm GMT )</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12">
-                        <div class="tu-footerlistholder  tu-seperator">
-                            <div class="tu-footercontent">
-                                <h5 class="tu-footertitle">Tutor by subjects</h5>
-                               <ul class="tu-footerlist">
-                                    <li><a href="cleaner-search-listing.html">General mathematics</a></li>
-                                    <li><a href="cleaner-search-listing.html">World languages</a></li>
-                                    <li><a href="cleaner-search-listing.html">Advanced placement</a></li>
-                                    <li><a href="cleaner-search-listing.html">Advance science play</a></li>
-                                    <li><a href="cleaner-search-listing.html">Social sciences</a></li>
-                                    <li><a href="cleaner-search-listing.html">International baccalaureate®</a></li>
-                                    <li><a href="cleaner-search-listing.html">Grooming technology</a></li>
-                                    <li><a href="cleaner-search-listing.html">Maketing business</a></li>
-                                    <li><a href="cleaner-search-listing.html">ACT® test prep</a></li>
-                                    <li><a href="cleaner-search-listing.html">English communications</a></li>
-                                    <li><a href="cleaner-search-listing.html">Career support</a></li>
-                                    <li><a href="cleaner-search-listing.html">PSAT/NMSQT® &amp; SAT® prep</a></li>
-                                    <li><a href="cleaner-search-listing.html">Content writing</a></li>
-                                    <li><a href="cleaner-search-listing.html">Student success skills</a></li>
-                                    <li class="tu-footerlist-explore"><a href="cleaner-search-listing.html">Explore all</a></li>
-                                </ul>
-                            </div>
-                            <div class="tu-footercontent-two">
-                                <h5 class="tu-footertitle">Online classes
-                                    <span class="tu-tag tu-bggreen">NEW</span>
-                                </h5>
-                                <ul class="tu-footerlist">
-                                    <li><a href="javascript:void(0);">Online science classes</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online islamiat classes</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online mathemetic classes</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online java classes</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online computer classes</a></li>
-                                    <li><a href="cleaner-search-listing.html">IBM python Analyst</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online geographic classes</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online C programming classes</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online statistic classes</a></li>
-                                    <li class="tu-footerlist-explore"><a href="cleaner-search-listing.html">Explore all</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="tu-footerlistholder  tu-seperator m-0">
-                            <div class="tu-footercontent-two">
-                                <h5 class="tu-footertitle">Useful links</h5>
-                                <ul class="tu-footerlist">
-                                    <li><a href="how-it-work.html">About</a></li>
-                                    <li><a href="cleaner-search-listing.html">Success stories</a></li>
-                                    <li><a href="cleaner-search-listing.html">Online classes</a></li>
-                                    <li><a href="login.html">Join our community</a></li>
-                                    <li><a href="cleaner-search-listing.html">Courses</a></li>
-                                    <li><a href="login.html">Sign in now</a></li>
-                                    <li><a href="cleaner-search-listing.html">Programs &amp; degrees</a></li>
-                                    <li><a href="how-it-work.html">How it works</a></li>
-                                    <li><a href="cleaner-search-listing.html">Learning materials</a></li>
-                                    <li><a href="index.html">F.A.Q</a></li>
-                                </ul>
-                            </div>
-                            <div class="tu-footercontent d-xl-flex">
-                                <div class="tu-footercontent_title">
-                                    <h5 class="tu-footertitle">Get mobile app</h5>
-                                    <p>Take education on the go. Get our mobile app for FREE! on your Apple and android devices</p>
-                                    <ul class="tu-footerdevice">
-                                        <li><a href="javascript:void(0);"><img src="../assets/cleaner/images/ios.png" alt="devices"></a></li>
-                                        <li><a href="javascript:void(0);"><img src="../assets/cleaner/images/android.png" alt="devices"></a></li>
-                                    </ul>
-                                </div>
-                                <div class="tu-footernewsletter">
-                                    <h5 class="tu-footertitle">Signup for newsletter</h5>
-                                    <p>Corrupti quolores etmquasa molestias epturite sinteam occaecati amet cupiditate mikume molareshe.</p>
-                                    <div class="tu-inputbtn">
-                                        <input type="email" placeholder="Enter email address" class="form-control">
-                                        <a href="index.html" class="tu-primbtn-icon tu-primbtn-orange"><i class="icon icon-send"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tu-footercopyright">
-                <div class="container">
-                    <div class="tu-footercopyright_content">
-                        <p>© 1994 - 2022 All Rights Reserved.</p>
-                        <ul class="tu-footercopyright_list">
-                            <li><a href="how-it-work.html">Careers</a></li>
-                            <li><a href="how-it-work.html">Terms of use</a></li>
-                            <li><a href="how-it-work.html">Privacy policy</a></li>
-                            <li><a href="how-it-work.html">Cookie notice</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-	<!-- FOOTER END -->
+	<!-- Footer start -->
+    <div id="footer"></div>
+	<!-- Footer end -->
     <!-- Custom Tooltip Render Here -->
     <div class="tu-tippysm">
         <span id="tu-verifed" class="d-none">
@@ -1287,23 +1044,27 @@
         </div>
  	</div>
     <!-- Custom Tooltip Render Here -->
-	<script src="../assets/cleaner/js/vendor/jquery.min.js"></script>
-    <script src="../assets/cleaner/js/vendor/popper-core.js"></script>
-    <script src="../assets/cleaner/js/vendor/bootstrap.min.js"></script>
-    <script src="../assets/cleaner/js/vendor/appear.js"></script>
-    <script src="../assets/cleaner/js/vendor/countTo.js"></script>
-    <script src="../assets/cleaner/js/vendor/splide.min.js"></script>
-    <script src="../assets/cleaner/js/vendor/select2.min.js"></script>
-    <script src="../assets/cleaner/js/vendor/particles.min.js"></script>
-    <script src="../assets/cleaner/js/vendor/venobox.min.js"></script>
-    <script src="../assets/cleaner/js/vendor/lightpick.js"></script>
-    <script src="../assets/cleaner/js/vendor/jRate.js"></script>
-    <script src="../assets/cleaner/js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="../assets/cleaner/js/vendor/tippy.js"></script>
-	<script src="../assets/cleaner/js/main.js"></script>
+	<script src="/assets//cleaner/js/vendor/jquery.min.js"></script>
+    <script src="/assets//cleaner/js/vendor/popper-core.js"></script>
+    <script src="/assets//cleaner/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets//cleaner/js/vendor/appear.js"></script>
+    <script src="/assets//cleaner/js/vendor/countTo.js"></script>
+    <script src="/assets//cleaner/js/vendor/splide.min.js"></script>
+    <script src="/assets//cleaner/js/vendor/select2.min.js"></script>
+    <script src="/assets//cleaner/js/vendor/particles.min.js"></script>
+    <script src="/assets//cleaner/js/vendor/venobox.min.js"></script>
+    <script src="/assets//cleaner/js/vendor/lightpick.js"></script>
+    <script src="/assets//cleaner/js/vendor/jRate.js"></script>
+    <script src="/assets//cleaner/js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/assets//cleaner/js/vendor/tippy.js"></script>
+	<script src="/assets//cleaner/js/main.js"></script>
+    <script defer="" src="/assets//js/uni-core/js/uni-core-bundle.min.js"></script>
+    <script defer="" src="/assets//js/app.js"></script>
+    <script src="/assets//js/include.js"></script>
+    <script src="/assets//js/i18n.js"></script>
     
     <!-- Page transition script -->
-    <script src="../assets/js/page-transition.js"></script>
+    <script src="/assets//js/page-transition.js"></script>
 
 
 </body></html>
