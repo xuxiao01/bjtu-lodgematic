@@ -446,7 +446,7 @@ jQuery(window).on("load", function() {
         value: 10,
       },
       color: {
-        value: ["#1DA1F2","#22C55E","#F97316"],
+        value: ["#1DA1F2","#60D1AE","#60D1AE"],
       },
       "opacity": {
         "random": true,

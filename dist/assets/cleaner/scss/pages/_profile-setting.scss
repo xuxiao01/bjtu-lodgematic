@@ -61,10 +61,10 @@
     flex-wrap: nowrap;
     border-radius: 4px;
     align-items: center;
-    border: 2px solid #22C55E;
+    border: 2px solid #60D1AE;
     justify-content: space-between;
     box-shadow: $drop_shadows_lightest;
-    background: linear-gradient(0deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.1)), #FFFFFF;
+    background: linear-gradient(0deg, rgba(96, 209, 174, 0.1), rgba(96, 209, 174, 0.1)), #FFFFFF;
     .tu-btnrea{
         flex: none;
         @extend %flex;

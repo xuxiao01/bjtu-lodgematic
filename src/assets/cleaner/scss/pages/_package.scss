@@ -131,14 +131,14 @@
     }
 }
 .tu-btnorange {
-    background-color: #F97316 !important;
+    background-color: #60D1AE !important;
 }
 .tu-btnplain{
     border: 2px solid $border-color ;
     background: transparent ;
     color: $font-color;
     &:hover , &:focus{
-        background: #F97316;
+        background: #60D1AE;
         color: $white;
         border-color: transparent;
         &::before{opacity: 0;}

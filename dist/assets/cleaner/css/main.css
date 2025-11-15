@@ -699,7 +699,7 @@ h6 a:hover {
 
 .tu-tag {
   padding: 1px 8px;
-  background-color: #F97316;
+  background-color: #60D1AE;
   color: #ffffff;
   font-weight: 700;
   border-radius: 10px 10px 0px 10px;
@@ -707,7 +707,7 @@ h6 a:hover {
 }
 
 .tu-bggreen {
-  background-color: #22C55E !important;
+  background-color: #60D1AE !important;
 }
 
 .tu-maintitle {
@@ -755,7 +755,7 @@ h6 a:hover {
 }
 
 .tu-green {
-  color: #22C55E !important;
+  color: #60D1AE !important;
 }
 
 .tu-blue {
@@ -763,7 +763,7 @@ h6 a:hover {
 }
 
 .tu-orange {
-  color: #F97316 !important;
+  color: #60D1AE !important;
 }
 
 /** --- pagination styling --- **/
@@ -1127,7 +1127,7 @@ button.tu-primbtn, button.tu-primbtn-lg, button.tu-secbtn, button.tu-primbtn-ico
 }
 
 .tu-primbtn-orange {
-  background-color: #F97316;
+  background-color: #60D1AE;
 }
 
 .tu-primbtn-gradient {
@@ -1362,7 +1362,7 @@ input[type=color].is-valid,
 select.is-valid,
 .uneditable-input.is-valid,
 textarea.is-valid {
-  border-color: #22C55E;
+  border-color: #60D1AE;
 }
 .form-control.is-valid:nth-child(n),
 input[type=text].is-valid:nth-child(n),
@@ -1382,7 +1382,7 @@ input[type=color].is-valid:nth-child(n),
 select.is-valid:nth-child(n),
 .uneditable-input.is-valid:nth-child(n),
 textarea.is-valid:nth-child(n) {
-  color: #22C55E;
+  color: #60D1AE;
 }
 .form-control[disabled],
 input[type=text][disabled],
@@ -1868,8 +1868,8 @@ form p span i {
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background-color: #22C55E;
-  border-color: #22C55E;
+  background-color: #60D1AE;
+  border-color: #60D1AE;
   font-size: 14px;
   font-family: "icomoon";
 }
@@ -2131,10 +2131,10 @@ select[required] + .select2 .select2-selection__choice + .select2-search.select2
   content: "\f00c";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
-  background-color: #22C55E;
+  background-color: #60D1AE;
 }
 .tu-check input:checked + label::before {
-  border: 5px solid #22C55E;
+  border: 5px solid #60D1AE;
 }
 .tu-check label {
   margin: 0;
@@ -2239,7 +2239,7 @@ input.tu-showplaceholder::placeholder {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #F97316;
+  background-color: #60D1AE;
 }
 .tu-navbar .navbar-collapse .navbar-nav > .nav-item > a:hover::before, .tu-navbar .navbar-collapse .navbar-nav > .nav-item > a.active::before {
   width: 100%;
@@ -2269,7 +2269,7 @@ input.tu-showplaceholder::placeholder {
   position: relative;
 }
 .tu-headerv2 .tu-menu {
-  background-color: #F97316;
+  background-color: #60D1AE;
 }
 .tu-headerv2 .tu-navbar {
   padding: 0 18px;
@@ -2290,7 +2290,7 @@ input.tu-showplaceholder::placeholder {
   color: #ffffff;
 }
 .tu-headerv2 .tu-headerbtn a {
-  background-color: #F97316;
+  background-color: #60D1AE;
 }
 
 .tu-navbar.tu-navbarvtwo .navbar-collapse .nav-item a::before {
@@ -2443,7 +2443,7 @@ input.tu-showplaceholder::placeholder {
   display: inline-block;
   vertical-align: middle;
   text-transform: uppercase;
-  background-color: #F97316;
+  background-color: #60D1AE;
 }
 
 @media (min-width: 1199px) {
@@ -2844,7 +2844,7 @@ input.tu-showplaceholder::placeholder {
   padding-right: 6px;
 }
 .tu-instructors_title h5 i {
-  color: #22C55E;
+  color: #60D1AE;
   font-size: 17px;
 }
 .tu-instructors_title > span {
@@ -3244,7 +3244,7 @@ input.tu-showplaceholder::placeholder {
   color: #ffffff;
 }
 .tu-bannerv2 .tu-banner_title h1 span {
-  color: #F97316;
+  color: #60D1AE;
 }
 .tu-bannerv2_img img {
   max-width: 1042px;
@@ -3451,7 +3451,7 @@ input.tu-showplaceholder::placeholder {
   color: #ffffff;
 }
 .tu-bannerv3 .tu-banner_title h1 span {
-  color: #F97316;
+  color: #60D1AE;
 }
 .tu-bannerv3_img img {
   max-width: initial;
@@ -3611,7 +3611,7 @@ input.tu-showplaceholder::placeholder {
   color: #ffffff;
 }
 .tu-bannervtwo .tu-banner_title h1 span {
-  color: #F97316;
+  color: #60D1AE;
 }
 .tu-bannervtwo .tu-starthere {
   top: -38px;
@@ -3644,7 +3644,7 @@ input.tu-showplaceholder::placeholder {
   background-color: transparent;
 }
 .tu-bannervthree .tu-banner_title h1 span {
-  color: #F97316;
+  color: #60D1AE;
 }
 .tu-bannervthree .tu-starthere {
   top: -20px;
@@ -3914,7 +3914,7 @@ input.tu-showplaceholder::placeholder {
   position: absolute;
   text-align: center;
   border-radius: 50%;
-  background: #22c55e;
+  background: #60D1AE;
   font: 700 0.75rem/1.6666666667em "Font Awesome 6 Free";
 }
 .tu-mainlist li + li {
@@ -4608,7 +4608,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .noUi-connect {
-  background: #22C55E;
+  background: #60D1AE;
 }
 
 .noUi-handle:after,
@@ -4661,7 +4661,7 @@ input.tu-showplaceholder::placeholder {
   width: 20px;
   height: 20px;
   top: 2px;
-  background: #22C55E;
+  background: #60D1AE;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04), 0px 8px 16px rgba(0, 0, 0, 0.08);
 }
 
@@ -4901,7 +4901,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-greenclr {
-  color: #22C55E;
+  color: #60D1AE;
 }
 
 .tu-blueclr {
@@ -4909,7 +4909,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-orangeclr {
-  color: #F97316;
+  color: #60D1AE;
 }
 
 .tu-iconheart {
@@ -5075,11 +5075,11 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-orange-bgclr {
-  background-color: #F97316;
+  background-color: #60D1AE;
 }
 
 .tu-green-bgclr {
-  background-color: #22C55E;
+  background-color: #60D1AE;
 }
 
 .tu-blue-bgclr {
@@ -5201,7 +5201,7 @@ input.tu-showplaceholder::placeholder {
 .tu-plandetail h3 {
   margin: 0;
   gap: 0 10px;
-  color: #F97316;
+  color: #60D1AE;
   font-weight: 600;
   align-items: center;
 }
@@ -5288,7 +5288,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-btnorange {
-  background-color: #F97316 !important;
+  background-color: #60D1AE !important;
 }
 
 .tu-btnplain {
@@ -5297,7 +5297,7 @@ input.tu-showplaceholder::placeholder {
   color: #1C1C1C;
 }
 .tu-btnplain:hover, .tu-btnplain:focus {
-  background: #F97316;
+  background: #60D1AE;
   color: #ffffff;
   border-color: transparent;
 }
@@ -5366,10 +5366,10 @@ input.tu-showplaceholder::placeholder {
   flex-wrap: nowrap;
   border-radius: 4px;
   align-items: center;
-  border: 2px solid #22C55E;
+  border: 2px solid #60D1AE;
   justify-content: space-between;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.08);
-  background: linear-gradient(0deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.1)), #FFFFFF;
+  background: linear-gradient(0deg, rgba(96, 209, 174, 0.1), rgba(96, 209, 174, 0.1)), #FFFFFF;
 }
 .tu-boxitem .tu-btnrea {
   flex: none;
@@ -5612,7 +5612,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-editclr {
-  color: #22C55E;
+  color: #60D1AE;
 }
 
 .tu-icon-holder {
@@ -5900,7 +5900,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-icongreen {
-  color: #22c55e;
+  color: #60D1AE;
 }
 
 .tu-profileview {
@@ -6031,7 +6031,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-colorgreen {
-  color: #22C55E !important;
+  color: #60D1AE !important;
 }
 
 .tu-protutorinfo {
@@ -6364,7 +6364,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-colororange {
-  color: #F97316 !important;
+  color: #60D1AE !important;
 }
 
 .tu-contactbox {
@@ -6440,7 +6440,7 @@ input.tu-showplaceholder::placeholder {
 }
 
 .tu-btngreen {
-  background-color: #22C55E !important;
+  background-color: #60D1AE !important;
 }
 
 .tu-boxtitle > h4 {
