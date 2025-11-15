@@ -134,7 +134,7 @@
     background:#E1D6E5;
 }
 .litepicker .container__days .day-item:hover{
-    box-shadow: inset 0 0 0 2px #6A307D;
+    box-shadow: inset 0 0 0 2px #60D1AE;
     color: $font_color;
     border-radius: 25px;
 }
@@ -147,7 +147,7 @@
     min-width: 48px;
 }
 .litepicker .container__days .day-item.is-today{
-    box-shadow: inset 0px -2px 0px #6A307D;
+    box-shadow: inset 0px -2px 0px #60D1AE;
     color: $font_color;
     border-radius: 0;
 }
