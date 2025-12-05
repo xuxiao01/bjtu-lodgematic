@@ -1,0 +1,45 @@
+<!--  GDPR modal --><!-- GDPR modal --><html><head><title>LodgeMatic - Smart Short-term Rental Management</title></head><body><div id="uc-gdpr-notification" class="uc-gdpr-notification uc-notification min-w-1/2 uc-notification-bottom-left lg:m-2">
+    <div class="uc-notification-message bg-white text-dark border rounded-1-5 min-w-1/2" style="position: relative; display: flex; flex-wrap: nowrap; align-items: center; gap: 16px; padding: 12px; padding-right: 40px;">
+
+        <!-- 隐藏CSS中的默认关闭按钮 -->
+        <style>
+            #uc-gdpr-notification .uc-notification-close:not(#uc-close-gdpr-notification) {
+                display: none !important;
+            }
+        </style>
+
+        <!-- 关闭按钮 - 右上角 -->
+        <a id="uc-close-gdpr-notification" class="uc-notification-close text-dark" style="position: absolute;
+                   top: 8px;
+                   right: 8px;
+                   width: 24px; 
+                   height: 24px; 
+                   display: flex; 
+                   align-items: center; 
+                   justify-content: center;
+                   background: rgba(0, 0, 0, 0.05);
+                   border: 1px solid rgba(0, 0, 0, 0.1);
+                   border-radius: 50%;
+                   transition: all 0.2s ease;
+                   cursor: pointer;
+                   font-size: 14px;
+                   line-height: 1;
+                   color: #666;
+                   text-decoration: none;
+                   z-index: 10;" onmouseover="this.style.background='rgba(0, 0, 0, 0.1)'; this.style.color='#333'; this.style.borderColor='rgba(0, 0, 0, 0.2)';" onmouseout="this.style.background='rgba(0, 0, 0, 0.05)'; this.style.color='#666'; this.style.borderColor='rgba(0, 0, 0, 0.1)';" title="关闭">×</a>
+
+        <!-- 文案区域 -->
+        <div style="display: flex; flex-direction: column; flex: 1;">
+            <h2 class="h5 ft-primary fw-bold -ls-1 m-0 text-dark" data-i18n="gdpr-title" style="margin: 0; font-weight: bold; font-size: 1.25rem;">GDPR Compliance</h2>
+            <p class="fs-6 mt-1" style="margin: 8px 0 0 0; font-size: 0.9rem;">
+                <span data-i18n="gdpr-desc">We use cookies to ensure you get the best experience on our website. By continuing to use our site, you accept our use of cookies, </span>
+                <a href="page-privacy.html" class="uc-link text-underline" data-i18n="gdpr-privacy" style="text-decoration: underline; color: inherit;">privacy policy</a>
+                <span data-i18n="gdpr-and"> and </span>
+                <a href="page-terms.html" class="uc-link text-underline" data-i18n="gdpr-terms" style="text-decoration: underline; color: inherit;">terms of service</a>.
+            </p>
+        </div>
+
+        <!-- 接受按钮 -->
+        <button id="uc-accept-gdpr" class="btn btn-sm btn-primary" data-i18n="gdpr-accept" style="padding: 4px 16px; font-size: 0.875rem; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; min-width: 100px;">Accept</button>
+    </div>
+</div> </body></html>

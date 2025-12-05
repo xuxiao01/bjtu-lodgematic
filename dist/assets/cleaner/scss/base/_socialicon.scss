@@ -1,0 +1,226 @@
+/** ====== Social icon ====== **/
+.tu-socialmedia{
+    @extend %flex;
+    gap: 10px;
+    padding-left: 0;
+    li{
+        list-style: none;
+        display: flex;
+        &:hover,
+        &.active{
+            a{
+                background-color: $white;
+                border-color: $white;
+            }
+            &.tu-facebookv3 > i,
+            &.tu-facebookv3 > a {color: #3b5999}
+            &.tu-facebook-messengerv3 > a,
+            &.tu-facebook-messengerv3 > i {color: #0084ff}
+            &.tu-twitterv3> a,
+            &.tu-twitterv3 > i {color: #55acee}
+            &.tu-twitchv3> a,
+            &.tu-twitchv3 > i {color: #9147ff}
+            &.tu-linkedinv3> a,
+            &.tu-linkedinv3 > i {color: #0077b5}
+            &.tu-skypev3> a,
+            &.tu-skypev3 > i {color: #00aff0}
+            &.tu-dropboxv3> a,
+            &.tu-dropboxv3 > i {color: #007ee5}
+            &.tu-vimeov3> a,
+            &.tu-vimeov3 > i {color: #1ab7ea}
+            &.tu-tumblrv3 > i,
+            &.tu-tumblrv3> a {color: #34465d}
+            &.tu-yahoov3> a,
+            &.tu-yahoov3 >i {color: #410093}
+            &.tu-googleplusv3> a,
+            &.tu-googleplusv3 > i,
+            &.tu-googlev3> a,
+            &.tu-googlev3 > i{color: #dd4b39}
+            &.tu-pinterestpv3> a,
+            &.tu-pinterestpv3 > i {color: #bd081c}
+            &.tu-youtubev3> a,
+            &.tu-youtubev3 > i {color: #cd201f}
+            &.tu-stumbleuponv3> a,
+            &.tu-stumbleuponv3 > i {color: #eb4924}
+            &.tu-redditv3> a,
+            &.tu-redditv3 > i {color: #ff5700}
+            &.tu-quorav3> a,
+            &.tu-quorav3 > i {color: #b92b27}
+            &.tu-yelpv3> a,
+            &.tu-yelpv3 > i {color: #af0606}
+            &.tu-soundcloudv3> a,
+            &.tu-soundcloudv3 > i {color: #f30}
+            &.tu-whatsappv3> a,
+            &.tu-whatsappv3 > i {color: #25d366}
+            &.tu-wechatv3> a,
+            &.tu-wechatv3 > i {color: #09b83e}
+            &.tu-instagramv3> a,
+            &.tu-instagramv3 > i {color: #e4405f}
+            &.tu-dribbblev3> a,
+            &.tu-dribbblev3 > i {color: #ea4c89}
+            &.tu-flickrv3> a,
+            &.tu-flickrv3 > i {color: #ff0084}
+            &.tu-rssv3> a,
+            &.tu-rssv3 > i {color: #f60}
+            &.tu-behancev3> a,
+            &.tu-behancev3 > i {color: #131418}
+            &.tu-foursquarev3> a,
+            &.tu-foursquarev3 > i {color: #f94877}
+        }
+    }
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba($white, $opacity_20);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        @extend %transition;
+        color: $lighter;
+    }
+}
+.tu-facebook > i,
+.tu-facebook > a {color: #3b5999}
+.tu-facebook-messenger > a,
+.tu-facebook-messenger > i {color: #0084ff}
+.tu-twitter> a,
+.tu-twitter > i {color: #55acee}
+.tu-twitch> a,
+.tu-twitch > i {color: #9147ff}
+.tu-linkedin> a,
+.tu-linkedin > i {color: #0077b5}
+.tu-skype> a,
+.tu-skype > i {color: #00aff0}
+.tu-dropbox> a,
+.tu-dropbox > i {color: #007ee5}
+.tu-vimeo> a,
+.tu-vimeo > i {color: #1ab7ea}
+.tu-tumblr > i,
+.tu-tumblr> a {color: #34465d}
+.tu-yahoo> a,
+.tu-yahoo >i {color: #410093}
+.tu-googleplus> a,
+.tu-googleplus > i,
+.tu-google> a,
+.tu-google > i{color: #dd4b39}
+.tu-pinterestp> a,
+.tu-pinterestp > i {color: #bd081c}
+.tu-youtube> a,
+.tu-youtube > i {color: #cd201f}
+.tu-stumbleupon> a,
+.tu-stumbleupon > i {color: #eb4924}
+.tu-reddit> a,
+.tu-reddit > i {color: #ff5700}
+.tu-quora> a,
+.tu-quora > i {color: #b92b27}
+.tu-yelp> a,
+.tu-yelp > i {color: #af0606}
+.tu-soundcloud> a,
+.tu-soundcloud > i {color: #f30}
+.tu-whatsapp> a,
+.tu-whatsapp > i {color: #25d366}
+.tu-wechat> a,
+.tu-wechat > i {color: #09b83e}
+.tu-instagram> a,
+.tu-instagram > i {color: #e4405f}
+.tu-dribbble> a,
+.tu-dribbble > i {color: #ea4c89}
+.tu-flickr> a,
+.tu-flickr > i {color: #ff0084}
+.tu-rss> a,
+.tu-rss > i {color: #f60}
+.tu-behance> a,
+.tu-behance > i {color: #131418}
+.tu-copy> a,
+.tu-copy > i {color: #999999}
+.tu-foursquare> a,
+.tu-foursquare > i {color: #f94877}
+
+.tu-facebookv2 {
+    i{
+        @extend %transition;
+    }
+    &:hover{
+        i{
+            color: #1877f2;
+        }
+    }
+} 
+.tu-twitterv2{
+    i{
+        @extend %transition;
+    }
+    &:hover{
+        i{
+            color: rgb(29, 155, 240);
+        }
+    }
+} 
+.tu-twitchv2{
+    i{
+        @extend %transition;
+    }
+    &:hover{
+        i{
+            color: #9147ff;
+        }
+    }
+} 
+.tu-linkedinv2{
+    i{
+        @extend %transition;
+        
+    }
+    &:hover{
+        
+        i{
+            color: #0a66c2;
+        }
+    }
+}
+
+.tu-dribbblev2{
+    i{
+        @extend %transition;
+        
+    }
+    &:hover{
+        i{
+            color: #ea4c89;
+        }
+    }
+} 
+.tu-youtubev2 {
+    i{
+        @extend %transition;
+        
+    }
+    &:hover{
+        i{
+            color: #cd201f;
+        }
+    }
+} 
+.tu-behancev2 {
+    i{
+        @extend %transition;
+        
+    }
+    &:hover{
+        i{
+            color: #131418
+        }
+    }
+}
+.tu-vimeov2{
+    i{ 
+        @extend %transition;
+    }
+    &:hover{
+        
+        i{
+            color: #1ab7ea;
+        }
+    }
+} 

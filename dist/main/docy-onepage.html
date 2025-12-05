@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"><head>
+    <!-- 使用统一的页面加载器 -->
+    <script src="/assets//js/app-head-bs.js"></script>
+    <style>
+        /* 设置绿色主题色 - 与其他页面保持一致 */
+        :root {
+            --color-primary: #60D1AE;
+        }
+        
+        /* logo 样式 */
+        .header_logo img {
+            max-width: 120px;
+            max-height: 48px;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+        }
+    </style>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/assets//docy/img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets//docy/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets//docy/assets/bootstrap/css/bootstrap-select.min.css">
+    <!-- icon css-->
+    <link rel="stylesheet" href="/assets//docy/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="/assets//docy/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="/assets//docy/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="/assets//docy/assets/animation/animate.css">
+    <link rel="stylesheet" href="/assets//docy/assets/video/video-js.min.css">
+    <link rel="stylesheet" href="/assets//docy/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="/assets//docy/assets/prism/prism.css">
+    <link rel="stylesheet" href="/assets//docy/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="/assets//docy/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="/assets//docy/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/assets//docy/css/style-main.css">
+    <link rel="stylesheet" href="/assets//docy/css/responsive.css">
+    <link rel="stylesheet" href="/assets//docy/css/bootstrap5-fixes.css">
+    <title>LodgeMatic - Smart Short-term Rental Management</title>
+
+    <!-- Unicons图标库 -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/thinline.css">
+    
+    <!-- 博客组件样式 -->
+    <link rel="stylesheet" href="/assets//docy/css/blog-components.css">
+</head>
+
+<body class="doc full-width-doc sticky-nav-doc onepage-doc fixed-header" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <div class="body_wrapper">
+
+    <div class="body_wrapper sticky_menu">
+        <!-- 页头组件容器 -->
+        <div id="blog-header"></div>
+
+
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+
+                    <!-- ===== 左侧导航 ===== -->
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist">
+                            <h3 class="nav_title">导航标题</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav" id="chapter-nav">
+                                    <!-- 文本稍后由 JS 覆盖 -->
+                                    <li class="nav-item"><a href="#doc" class="nav-link">第一章</a></li>
+                                    <li class="nav-item"><a href="#shortcodes" class="nav-link">第二章</a></li>
+                                    <li class="nav-item"><a href="#test" class="nav-link">第三章</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <!-- ===== 主体内容 ===== -->
+                    <div class="col-lg-8 col-md-8">
+                        <div class="documentation_info" id="post">
+
+                            <!-- 第一章 -->
+                            <article class="documentation_body shortcode_text doc-section" id="doc">
+                                <div class="chapter-content"></div> <!-- 挂载点 -->
+                            </article>
+
+                            <!-- 第二章 -->
+                            <article class="shortcode_info documentation_body typography_content doc-section" id="shortcodes">
+                                <div class="chapter-content"></div>
+                            </article>
+
+                            <!-- 第三章 -->
+                            <article class="documentation_body shortcode_text doc-section" id="test">
+                                <div class="chapter-content"></div>
+                            </article>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 页脚组件容器 -->
+        <div id="blog-footer"></div>
+
+    </div>
+
+    <!-- Tooltip content -->
+    <div class="tooltip_templates d-none">
+        <div id="tooltipOne" class="tip_content">
+            <div class="text">
+                <p>Me old mucker bamboozled horse play fantastic skive off baking cakes knees up lurgy spiffing, Harry
+                    bog wind up say are you taking the piss porkies hunky-dory, blower pardon you you mug pear shaped
+                    pukka get stuffed mate lavatory.</p>
+                <h6>Related Reading:<span>Child Theming for Layers</span></h6>
+            </div>
+        </div>
+    </div>
+    <div class="tooltip_templates d-none">
+        <div id="tooltipTwo" class="tip_content">
+            <img src="/assets//docy/img/blog-grid/blog_grid_post1.jpg" alt="">
+            <div class="text">
+                <p>Me old mucker bamboozled horse play fantastic skive off baking cakes knees up lurgy spiffing, Harry
+                    bog wind up say are you taking the piss porkies hunky-dory,</p>
+                <h6>Related Reading:<span>Child Theming for Layers</span></h6>
+            </div>
+        </div>
+    </div>
+    <div class="tooltip_templates d-none">
+        <div id="note-link-a" class="tip_content">
+            <div class="text footnotes_item">
+                <strong>Footnote Name A</strong>
+                <br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptas dicta dolor.
+            </div>
+        </div>
+    </div>
+    <div class="tooltip_templates d-none">
+        <div id="note-link-b" class="tip_content">
+            <div class="text footnotes_item">
+                <strong>Footnote Name B</strong> <a href="#0">[PDF]</a>
+                <br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptas dicta dolor.
+            </div>
+        </div>
+    </div>
+    <div class="tooltip_templates d-none">
+        <div id="note-link-c" class="tip_content">
+            <div class="text footnotes_item">
+                <strong>Footnote Name C</strong>
+                <br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptas dicta dolor.
+            </div>
+        </div>
+    </div>
+    <video id="vid2" class="video-js vjs-default-skin mfp-hide" preload="auto">
+        <p>Video Playback Not Supported</p>
+    </video>
+
+    <!-- Back to top button -->
+    <a id="back-to-top" title="Back to Top"></a>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS (Bootstrap 5 with jQuery compatibility) -->
+    <script src="/assets//docy/js/jquery-3.7.1.min.js"></script>
+    <script src="/assets//docy/js/pre-loader.js"> </script>
+    <script src="/assets//docy/assets/bootstrap/js/popper.min.js"></script>
+    <script src="/assets//docy/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets//docy/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="/assets//docy/js/parallaxie.js"></script>
+    <script src="/assets//docy/js/TweenMax.min.js"></script>
+    <script src="/assets//docy/js/anchor.js"></script>
+    <script src="/assets//docy/assets/wow/wow.min.js"></script>
+    <script src="/assets//docy/assets/prism/prism.js"></script>
+    <script src="/assets//docy/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="/assets//docy/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/assets//docy/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="/assets//docy/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="/assets//docy/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="/assets//docy/assets/video/video.min.js"></script>
+    <script src="/assets//docy/assets/video/wistia.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="/assets//docy/js/onpage-menu.js"></script>
+    <script src="/assets//docy/js/main.js"></script>
+    <!-- 假数据用的依赖 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mockjs@1.1.0/dist/mock.js"></script>
+    <script src="/assets//docy/api/samAxios.js"></script>
+	<script src="/assets//docy/mock-articles.js"></script>
+    <script src="/assets//docy/js/onepage-render.js"></script>
+
+    <!-- 国际化系统 -->
+    <script src="/assets//js/i18n.js"></script>
+    <!-- 博客组件加载器 -->
+    <script src="/assets//docy/js/blog-include.js"></script>
+    <!-- 页面跳转加载动画 -->
+    <script src="/assets//js/page-transition.js"></script>
+
+
+</div></body></html>
